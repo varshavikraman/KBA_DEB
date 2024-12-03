@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body bgcolor="lightpink">
+    <h1 align="center"><font color=violet face=arial>ADD COURSE</font></h1>
+    <form>
+        <table cellspacing="1">
+            <tr>
+                <td>COURSE NAME:</td>
+                <td><input type="text" placeholder="enter the course name" required></td>
+            </tr>
+            <tr>
+                <td>COURSE ID:</td>
+                <td><input type="text" placeholder="enter the course Id" required></td>
+            </tr>
+            <tr>
+                <td>COURSE TYPE:</td>
+                <td>
+                    <select name="course type" required>
+                        <option value="course1" selected> course 1 </option>
+                        <option value="course2">course 2</option> 
+                        <option value="course3">course 3</option>               
+                    </select>
+                </td>
+        
+            </tr>
+           <tr>
+            <td>Description:</td>
+            <td><textarea rows="5" cols="25"></textarea></td>
+           </tr>
+           <tr>
+            <td>GENDER:</td>
+            <td>
+                <input type="radio" name="GENDER" value="male"> male
+                <input type="radio" name="GENDER" value="female"> female
+            </td>
+           </tr>
+           <tr>
+            <td>EDUCATION</td>
+            <td>
+                <input type="checkbox" name="UG" value="UG">UG
+                <input type="checkbox" name="UG" value="PG">PG
+            </td>
+        </tr>
+        <tr>
+            <td>EMAIL</td>
+            <td> <input type="email"></td>
+        </tr>
+        <tr>
+            <td>PASSWORD</td>
+            <td><input type="password"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><input type="submit" value="SUBMIT"></td>
+            <td><input type="reset" value="RESET"></td>
+        </tr>
+
+        </table>
+    </form>
+</body>
+</html>
