@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add course</title>
+</head>
+<body  bgcolor="lightpink">
+    <h1 align="center"><font color=violet face=arial>ADD COURSE</font></h1>
+    <form>
+        <center>
+        <table cellspacing="1">
+            <tr>
+                <td>COURSE NAME:</td>
+                <td><input type="text" placeholder="enter the course name" required></td>
+            </tr>
+            <tr>
+                <td>COURSE ID:</td>
+                <td><input type="text" placeholder="enter the course Id" required></td>
+            </tr>
+            <tr>
+                <td>COURSE TYPE:</td>
+                <td>
+                    <select name="course type" required>
+                        <option value="course1" selected> course 1 </option>
+                        <option value="course2">course 2</option> 
+                        <option value="course3">course 3</option>               
+                    </select>
+                </td>
+        
+            </tr>
+           <tr>
+            <td>Description:</td>
+            <td><textarea rows="5" cols="25"></textarea></td>
+           </tr>
+        
+            
+            <tr>
+            <td>Price :</td>
+            <td>
+                <select name="Amount" required>
+                    <option value="Amount" selected>Rs 5000</option>
+                    <option value="Amount">Rs 4000</option> 
+                    <option value="Amount">Rs 3500</option>  
+                </select>
+            </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Add Course"></td>
+            </tr>
+
+        </table>
+    </center>
+    </form>
+    
+</body>
+</html>
