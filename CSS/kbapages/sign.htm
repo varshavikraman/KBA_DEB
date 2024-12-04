@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <style>
+        .man{
+            background-color: white;
+            height: 300px;
+            width: 300px;
+            margin-top: 200px;
+            margin-left: 500px;
+            padding-top: 10px;
+            padding-left: 65px;
+        }
+        .put p a{
+            text-decoration: none;
+        }
+        .but button{
+            background-color: rgb(241, 147, 6);
+        }
+    </style>
+</head>
+<body style="background-color: blanchedalmond;">
+    <div class="man">
+    <h2 style="color: rgb(236, 152, 25);text-align: center;">Sign Up</h2>
+    
+      <form action="">
+        <div>
+            <label for="name">Name:</label><br>
+            <input type="text" required>
+        </div>
+        <div>
+            <label for="email">Email:</label><br>
+            <input type="email" required>
+        </div>
+        <div>
+            <label for="password">Password:</label><br>
+            <input type="password" required> 
+        </div>
+        <div>
+            <label for="Amount">Price:</label><br>
+            <select name="Amount" required>
+                <option value="Admin" selected> Admin </option>
+            </select>
+        </div>
+        <p class="but"><button type="submit">SignUp</button>
+      </form>
+      <div class="put">
+        <p>Already have an account? <a href="login.htm">Login</a></p>
+       </div>
+     </div>
+</body>
+</html>

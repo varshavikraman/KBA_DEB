@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+    <style>
+        .box button{
+            background-color: rgb(252, 153, 6);
+        }
+        .box a{
+            text-decoration: none;
+        }
+        .ball p a{
+            text-decoration: none;
+        }
+        .box{
+            display: flex;
+            justify-content: space-between;
+        }
+        .app{
+            background-color: white;
+            height: 200px;
+            width: 250px;
+            margin-top: 200px;
+            margin-left: 500px;
+            padding-bottom: 20px;
+            padding-left: 5px;
+        }
+
+    </style>
+</head>
+<body style="background-color: blanchedalmond;">
+    <div class="app">
+        <h2 style="text-align: center;color: rgb(243, 149, 7);">Login</h2>
+        <form>
+            <div>
+                <label for="email">Email:</label><br>
+                <input type="email" required>
+            </div>
+            <div>
+                <label for="password">Password:</label><br>
+                <input type="password" required>
+            </div>
+            <p class="box"><button type="submit">Login</button>
+            <a href="forgot password">Forgot Password?</a></p>
+        </form>
+             <div class="ball">
+              <p>Don't have an account? <a href="signup">Sign Up</a></p>
+             </div>
+    </div>
+</body>
+</html>
