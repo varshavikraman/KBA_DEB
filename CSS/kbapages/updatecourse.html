@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Course</title>
+    <style>
+        .bat{
+            background-color: white;
+            height: 400px;
+            width: 300px;
+            margin-top: 100px;
+            margin-left: 450px;
+            padding-left: 40px; 
+            border-style: none;
+            border-radius: 20px;      
+        }
+        nav{
+            background-color: rgb(252, 209, 145);
+           
+            display: flex;
+            justify-content: space-between;
+            margin: 10px;
+        }
+        nav a{
+            text-decoration: none;
+            margin: 10px;
+            color: brown;
+        }
+        nav a:hover{
+            background-color: white;
+            font-size: x-large;
+        }
+        input{
+            width: 250px;
+        }
+        select{
+            width: 260px;
+        }
+        button{
+            width: 200px;
+        }
+    </style>
+</head>
+<body style="background-color: blanchedalmond;">
+    <div>
+        <nav>
+            <img src="Logo1.png" alt="logo" height=30>
+                <div>
+                <a href="home">Home</a>
+                <a href="course">Course</a>
+                <a href="contact us">Contact Us</a>
+                <a href="add course">Add Course</a>
+                <a href="logout">Logout</a>
+                </div>
+        </nav>
+    </div>
+    <div class="bat">
+        <h2 style="color: rgb(236, 145, 9);text-align: center;">Update Course</h2>
+        <form action="">
+            <div>
+                <label for="text">Course Name:</label><br>
+                <input type="text">
+            </div>
+            <div>
+                <label for="text">Course Type:</label><br>
+                <select name="text" required>
+                    <option value="text" selected>Hybrid</option>
+                    <option value="text">Blockchain</option>
+                    <option value="text">Cyber security</option>
+                </select>
+
+            </div>
+            <div>
+                <label for="text">Description:</label><br>
+                <textarea name="text" rows="10" cols="30"></textarea>
+            </div>
+            <div>
+                <label for="text">Price:</label><br>
+                <select name="text" id=""required>
+                    <option value="text">Rs. 15000</option>
+                    <option value="text">Rs. 20000</option>
+                    <option value="text">Rs. 10000</option>
+                </select>
+            </div>
+            <p style="text-align: center;"><button type="submit" style="background-color: rgb(223, 136, 6);">Update Course</button></p>
+        </form>
+    </div>
+    
+</body>
+</html>
