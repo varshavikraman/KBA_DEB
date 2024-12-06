@@ -1,0 +1,5 @@
+.cat{
+    float: left;
+    width: 33%;
+    border-left: 1px color(srgb red green blue) solid;
+}

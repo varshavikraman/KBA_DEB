@@ -1,0 +1,10 @@
+p{
+    text-align: center;
+    text-decoration: underline;
+    color: rgb(223, 15, 15);
+    font-size: xx-large;
+    font-style: italic;
+    background-color: beige;
+    height: 100px;
+    width: 100px;
+}
