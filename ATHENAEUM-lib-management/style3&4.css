@@ -1,0 +1,203 @@
+body{
+    margin: auto;
+    padding: auto;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #b6ca93;
+}
+h1{
+    color:rgb(67, 90, 18);
+}
+img{
+    height:25px
+}
+.search{
+    background-color: rgb(67, 90, 18);
+}
+nav{
+    background-color: rgb(141, 170, 102);
+    display: flex;
+    justify-content: space-between;
+}
+nav a{
+    text-decoration: none;
+    margin: 10px;
+    color: rgb(67, 90, 18);
+}
+.cap{
+    text-align: center;
+    margin-top: 250px;
+}
+.can {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+.book-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.book-image {
+    width: 100%;
+    height: 200px; 
+    object-fit: contain;
+}
+.book-info {
+    padding: 15px;
+}
+.book-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+}
+.book-author {
+    font-size: 16px;
+    color: #555;
+    margin-top: 5px;
+}
+.book-summary {
+    font-size: 14px;
+    color: #666;
+    margin-top: 10px;
+    line-height: 1.6;
+}
+.add-book1{
+    text-align: center;
+}
+.add-book1 button{
+    
+    background-color: rgb(104, 151, 3);
+}
+.add-book1 a{
+    text-decoration: none;
+}
+.add-book2{
+    text-align: center;
+}
+.add-book2 button{
+    position: relative;
+    top: 65px;
+    background-color: rgb(104, 151, 3);
+}
+.add-book3 a{
+    text-decoration: none;
+}
+.add-book3{
+    text-align: center;
+}
+.add-book3 button{
+    position: relative;
+    top: 85px;
+    background-color: rgb(104, 151, 3);
+}
+.add-book3 a{
+    text-decoration: none;
+}
+.add-book4{
+    text-align: center;
+}
+.add-book4 button{
+    position: relative;
+    top: 65px;
+    background-color: rgb(104, 151, 3);
+}
+.add-book4 a{
+    text-decoration: none;
+}
+.can2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+.book-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.book-image {
+    width: 100%;
+    height: 200px; 
+    object-fit: contain;
+}
+.book-info {
+    padding: 15px;
+}
+.book-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+}
+.book-author {
+    font-size: 16px;
+    color: #555;
+    margin-top: 5px;
+}
+.book-summary {
+    font-size: 14px;
+    color: #666;
+    margin-top: 10px;
+    line-height: 1.6;
+}
+.add-book5{
+    text-align: center;
+}
+.add-book5 button{
+    
+    background-color: rgb(104, 151, 3);
+}
+.add-book5 a{
+    text-decoration: none;
+}
+.add-book6{
+    text-align: center;
+}
+.add-book6 button{
+    position: relative;
+    top: 20px;
+    background-color: rgb(104, 151, 3);
+}
+.add-book6 a{
+    text-decoration: none;
+}
+.add-book7{
+    text-align: center;
+}
+.add-book7 button{
+    position: relative;
+    top: 40px;
+    background-color: rgb(104, 151, 3);
+}
+.add-book7 a{
+    text-decoration: none;
+}
+.add-book8{
+    text-align: center;
+}
+.add-book8 button{
+    position: relative;
+    top: 25px;
+    background-color: rgb(104, 151, 3);
+}
+.add-book8 a{
+    text-decoration: none;
+}
+.late button{
+    height: 50px;
+    width: 150px;
+    background-color: rgb(104, 151, 3);
+    position: relative;
+    left: 580px;
+}

@@ -1,0 +1,39 @@
+body{
+    margin: 10px;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #b6ca93;
+    color: rgb(67, 90, 18);
+}
+img{
+    height:50px;
+}
+.logo{
+    text-align: center;
+}
+.app{
+    background-color: white;
+            height: 400px;
+            width: 260px;
+            margin: auto;
+            padding-top: 50px;
+            padding-left: 50px;
+            border-style: none;
+            border-radius: 20px;
+}
+h2{
+    padding-left: 60px;
+}
+a{
+    text-decoration: none;
+}
+.login{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 55px;
+}
+button{
+    background-color: rgb(67, 90, 18);
+
+}

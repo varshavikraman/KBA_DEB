@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style5.css">
+    <title>Add book</title>
+</head>
+<body>
+    <div>
+        <nav>
+            <form action="">
+                <img src="IMAGE/atheneum-logo.png" alt="logo" height=30>
+                <input type="search" id="search" name="query" placeholder="Search for books,Author,book id ..." aria-label="Search">
+                <button type="submit" class="search">Search</button>
+            </form>
+            <div>
+                <a href="home3.html">Home</a>
+                <a href="viewbooks4.html">Books</a>
+                <a href="addbook5.html">Add book</a>
+                <a href="login1.html">Logout</a>
+             </div>
+        </nav>
+        <div class="logo">
+            <img src="IMAGE/atheneum-logo.png" alt="logo">
+            <h1>ATHENAEUM</h1>
+         </div>
+         <div class="app">
+            <h2>Add New Book</h2>
+            <form action="#">
+              <div>
+                <label for="book-title">Book Title</label><br>
+                <input type="text" id="book-title" name="book-title" required>
+              </div>
+              <div>
+                <label for="author">Author</label><br>
+                <input type="text" id="author" name="author" required>
+              </div>
+              <div>
+                <label for="isbn">Book Id</label><br>
+                <input type="text" id="isbn" name="isbn" required>
+              </div>
+              <div>
+                <label for="duration">Duration</label><br>
+                <select id="availability" name="availability">
+                    <option value="" selected>15 days</option>
+                    <option value="">1 month</option>
+                </select>
+              </div> 
+                   
+               <p class="login">
+                <button type="submit" class="one">Add Book</button>
+                <button type="reset" class="two">Edit</button>
+              </p> 
+            </form>
+         </div> 
+    </div>
+    
+</body>
+</html>

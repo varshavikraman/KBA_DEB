@@ -1,0 +1,67 @@
+body{
+    margin: auto;
+    padding: auto;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #b6ca93;
+}
+h1{
+    color:rgb(67, 90, 18);
+}
+img{
+    height:25px
+}
+.search{
+    background-color: rgb(67, 90, 18);
+}
+nav{
+    background-color: rgb(141, 170, 102);
+    display: flex;
+    justify-content: space-between;
+}
+nav a{
+    text-decoration: none;
+    margin: 10px;
+    color: rgb(67, 90, 18);
+}
+.logo{
+    text-align: center;
+}
+.logo img{
+    height: 50px;
+}
+.app{
+    background-color: white;
+            height: 350px;
+            width: 260px;
+            margin: auto;
+            padding-top: 50px;
+            padding-left: 50px;
+            border-style: none;
+            border-radius: 20px;
+}
+h2{
+    position: relative;
+    left: 20px;
+    bottom: 15px;
+    color: rgb(67, 90, 18);
+}
+a{
+    text-decoration: none;
+}
+.login{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 55px;
+}
+.login button{
+    position: relative;
+    top: 30px;
+}
+.one{
+    background-color: rgb(3, 129, 41);
+}
+.two{
+    color: rgb(9, 180, 60);
+    border-color: rgb(9, 180, 60);
+}
