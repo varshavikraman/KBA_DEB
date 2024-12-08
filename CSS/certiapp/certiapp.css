@@ -1,0 +1,28 @@
+.nav{
+    display: flex;
+    justify-content: right;
+}
+.nav a{
+    text-decoration: none;
+    margin: 10px;
+    color: brown;
+}
+.nav a:hover{
+    background-color: rgb(50, 24, 196);
+    font-size:x-large;
+}
+
+h1{
+    text-align: center;
+    color: rgb(243, 126, 126);
+    font-style: oblique;
+}
+img{
+    height: 200px;
+    position: relative;
+    left: 540px;
+}
+.see{
+    display: flex;
+    justify-content: center;
+}
