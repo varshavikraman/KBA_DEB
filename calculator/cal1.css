@@ -1,0 +1,106 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+.calculator {
+    display: grid;
+    grid-template-columns: repeat(6, 60px);
+    grid-template-rows: repeat(6, 60px);
+    gap: 10px;
+    background-color: #333;
+    padding: 20px;
+    border-radius: 15px;
+}
+.calculator button{
+    grid-gap: 5px;
+    padding: 10px;
+
+}
+.calculator input {
+    grid-column: span 6;
+    height: 60px;
+    text-align: right;
+    font-size: 24px;
+    padding: 10px;
+    background-color: #222;
+    color: white;
+    border:solid;
+    border-radius: 10px;
+}
+
+.number {
+    background-color: #f1f1f1;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.number:hover {
+    background-color: #492e2e;
+}
+
+.operator {
+    background-color: #0a0a0a;
+    color: white;
+}
+
+.operator5-on{
+    background-color: #ce5d11;
+    color: white;
+}
+.operator-on{
+    background-color: #ce5d11;
+    color: white;
+}
+.operator.double {
+    grid-row: span 2;
+}
+
+.operator1.del{
+    background-color: #e4f310;
+    color: rgb(8, 8, 8);
+}
+
+.operator1{
+    height: 30px;
+    background-color: #0a0a0a;
+    color: white;
+    position: relative;
+    top: 40px;
+}
+
+.operator12 {
+    height: 30px;
+    background-color: #0a0a0a;
+    color: white;
+    position: relative;
+    top: 20px;
+}
+.head{
+    display: flex;
+    justify-content: space-between;
+    color: #adc7ae;
+    font-size:large;
+  
+}
+.head p{
+    font-size: 30px;
+    font-style: oblique;
+}
+.head div{
+    height: 30px;
+    width: 50px;
+    border-style: solid;
+    position: relative;
+    top: 15px;
+}
