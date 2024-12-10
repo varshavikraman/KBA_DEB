@@ -33,6 +33,9 @@ img{
     display: flex;
     justify-content: center;
 }
+.see button{
+    background-color: aqua;
+}
 .form{
     background-color:rgb(245, 243, 243);
     height: 500px;

@@ -1,5 +1,21 @@
 .cat{
     float: left;
     width: 33%;
-    border-left: 1px solid blue;
+    border-left: 1px solid rgb(75, 26, 139);
+}
+@media only screen and (max-width:600px){
+    .cat{
+        width: 100%;
+    }
+    .cat img{
+        height: 30px;
+        width: 50px;
+    }
+    .cat h1{
+        font-size: medium;
+    }
+    .cat p{
+        font-size: small;
+    }
+
 }
