@@ -6,48 +6,49 @@
     <title>Issuse Certificate</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <div class="flex justify-end	">
+<body class="bg-sky-50	">
+    <div class="flex justify-between  ">
         <div>
-             <h1>Certificate Dapp</h1>
+             <h1 class="text-center pr-14 text-2xl font-bold">Certificate Dapp</h1>
         </div>
-        <div>
-             <a href="home">Home</a>
-             <a href="issue certificate">Issue Certificate</a>
+        <div class="space-x-3 ">
+             <a href="home" class="hover:bg-sky-500 ">Home</a>
+             <a href="issue certificate" class="hover:bg-sky-500 ">Issue Certificate</a>
         </div>
     </div>
-    <div class="h-48 bg-red-50">
-        <form action="">
-            <h2>Issuse New Certificate</h3>
-            <div class="can1">
-                <label for="text">Select Course*</label><br>
-                <select name="course" id=""required>
+    <div class="h-[450px] w-[800px] pl-12 bg-sky-200 mt-14 ml-36 shadow-xl	rounded-lg	">
+    
+        <form class="text-sm">
+            <h3 class="text-2xl pt-6 ">Issuse New Certificate</h3>
+            <div class="pt-6">
+                <label for="text" >Select Course*</label><br>
+                <select name="course" id=""required class="border-solid border border-current w-64	">
                     <option value="course" selected>Certified Blockchain Asscoiate</option>
                     <option value="">course 2</option>
                     <option value="">course 3</option>
                 </select>
             </div>
-            <div class="can2">
+            <div class="pt-4">
                 <label for="text">Certificate Id*</label><br>
-                <input type="text">
+                <input type="text" class="border-solid border border-current w-64">
             </div>
-            <div class="can3">
+            <div class="pt-4">
                 <label for="">Candidate Name*</label><br>
-                <input type="text">
+                <input type="text" class="border-solid border border-current w-64">
             </div>
-            <div class="can4">
+            <div class="pt-4">
                 <label for="">Select Grade*</label><br>
-                <select name="grade" id="">
+                <select name="grade" id=""class="border-solid border border-current w-64">
                     <option value="">S</option>
                     <option value="">A</option>
                     <option value="">B</option>
                 </select>
             </div>
-            <div class="can5">
+            <div class="pt-4">
                 <Label>Issued Date*</Label><br>
-                <input type="date">
+                <input type="date" class="border-solid border border-current w-64">
             </div>
-            <div class="can6"><button type="submit"><a href="">Issuse Certificate</a></button></div>
+            <div class="pt-6"><button type="submit"class=" bg-sky-400"><a href="">Issuse Certificate</a></button></div>
         </form>
     </div>
 </body>
