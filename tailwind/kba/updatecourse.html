@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Course</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-rose-50">
+    
+        <nav class="flex justify-between bg-rose-600">
+            <img src="/IMAGE/Logo1.png" alt="logo" class="h-10">
+                <div class="text-white space-x-4 ">
+                <a href="home.html">Home</a>
+                <a href="course.html">Course</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="addcourse.html">Add Course</a>
+                <a href="logout">Logout</a>
+                </div>
+        </nav>
+
+    <div class=" bg-rose-300 h-[580px] w-[450px] rounded-xl shadow-lg shadow-rose-500 mt-5 ml-96 pl-9">
+        <h2 class="text-center pr-14 text-2xl text-rose-600 pt-8 ml-10">Update Course</h2>
+        <form action="">
+            <div class="mt-2">
+                <label for="text">Course Name:</label><br>
+                <input type="text" class="w-96">
+            </div>
+            <div class="mt-2">
+                <label for="text">Course Type:</label><br>
+                <select name="text" required class="w-96">
+                    <option value="text" selected>Hybrid</option>
+                    <option value="text">Blockchain</option>
+                    <option value="text">Cyber security</option>
+                </select>
+
+            </div>
+            <div class="mt-2">
+                <label for="text">Description:</label><br>
+                <textarea name="text" rows="10" cols="30" class="w-96"></textarea>
+            </div>
+            <div class="mt-2">
+                <label for="text">Price:</label><br>
+                <select name="text" id=""required class="w-96">
+                    <option value="text">Rs. 15000</option>
+                    <option value="text">Rs. 20000</option>
+                    <option value="text">Rs. 10000</option>
+                </select>
+            </div>
+            <div class="mt-6">
+            <p><button type="submit" class="w-96 border-solid	border border-rose-600 border-600 rounded-lg bg-rose-600">Update Course</button></p>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
