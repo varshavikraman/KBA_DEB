@@ -86,9 +86,25 @@
         let a2=9
         let a3=45
         
-        let smallest=(a1 < a2 && a1 < a3) ? a1 :(a2 < a1 && a2 < a3) ? a2 :a3;
+        let smallest=(a1<a2&&a1<a3) ? a1:(a2<a1&&a2<a3) ? a2:a3;
 
         document.write("<br>The smallest number is ",smallest)
+
+        // number is zero,positive and negative
+        let n=90
+
+        document.write(n>0?'<br>'+n+'is positive': n<0? '<br>'+n+'is negetive':'<br>'+n+'is zero')
+
+        //the person is eligible for voting
+        let age=30
+        document.write(age>=18?'<br>'+age+'Eligible for vote':'<br>'+age+'Not eligible for vote')
+
+        //sum of the two given integers
+        let x=33
+        let y=45
+        let sum=x+y
+
+        document.write(sum>=50 && sum<=80? "<br>" +65:80)
 
         
 
