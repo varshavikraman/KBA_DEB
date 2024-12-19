@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity 2</title>
+</head>
+<body>
+    <p id="demo"></p>
+    <script>
+        //swap two numbers using a temporary variable
+        let a=2;
+        let b=6;
+        
+        let temp=a;
+        a=b;
+        b=temp;
+        document.write(`Swapped numbers are: ${a} and ${b}`)
+
+        //swap two numbers without using a temporary variable
+        a=a+b
+        b=a-b
+        a=a-b
+        document.write(`<br>Swapped numbers are: ${a} and ${b}`)
+
+        //Celsius to fahrenheit
+        let celsius=40;
+        let fahrenheit=(40*9/5)+32;
+        document.write(`<br>${celsius}°C is equal to ${fahrenheit}°F`)
+
+        //square of a number
+        let c=5;
+        let square=c*c;
+        document.write("<br>the square value of c=",square)
+
+        //cube of a number
+        let d=10;
+        let cube=d*d*d;
+        document.write("<br>the cube value of d=",cube)
+
+        //area of square, rectangle, triangle, and circle
+        let length=4
+        let width=3
+        let base=12
+        let height=6
+        let side1=8
+        let side2=9
+        const pi=3.14
+        let radius=7
+    
+        let asq=length*length
+        let arect=length*width
+        let atri=(base*height)/2
+        let acircle=pi*radius*radius
+        
+        document.write(`<br>The area of square = ${asq} <br> The area of rectangle = ${arect} <br> The area of triangle = ${atri} <br> The area of circle = ${acircle}`)
+        
+        //perimeter of square, rectangle, triangle and circle
+        let psq=4*length
+        let prect=2*(length+width)
+        let pcircle=2*pi*radius
+        let ptri=side1+base+side2
+
+        document.write(`<br>The perimeter of square = ${psq} <br> The perimeter of rectangle = ${prect} <br> The perimeter of triangle = ${ptri} <br> The perimeter of circle = ${pcircle}`)
+        
+        //simple interest and compound interest
+        let P=1000
+        let R=10
+        let T=2
+        let SI=(P*R*T)/100
+        let Am=P*(1+R/100)**T
+        let CI=Am-P
+
+        document.write(`<br>Simple Interest = ${SI} <br>Compound Interest = ${CI}`) 
+
+        //largest among two numbers
+        let n1=9
+        let n2=5
+
+        let largest=n1>n2 ? n1:n2;
+
+        document.write("<br>The largest number is ",largest)
+
+        //smallest among three numbers
+        let a1=12
+        let a2=9
+        let a3=45
+        
+        let smallest=(a1 < a2 && a1 < a3) ? a1 :(a2 < a1 && a2 < a3) ? a2 :a3;
+
+        document.write("<br>The smallest number is ",smallest)
+
+        
+
+        
+        
+
+       
+
+
+
+
+
+    </script>
+</body>
+</html>
