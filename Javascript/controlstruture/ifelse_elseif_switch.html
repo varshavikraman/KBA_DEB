@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     //if else
+    let a=5,b=10,c='5',p='*';
+    if(a<b)
+    {
+        document.write(`${a} is smaller <br>`)
+    }
+    else
+    {
+        document.write(`${b} is smaller <br>`)
+    }
+    if(a===c)
+    {
+        document.write(`${a} and ${c} are equal <br>`)
+    }
+    else
+    {
+        document.write(`${a} and ${c} are not equal <br>`) 
+    }
+    //if elseif
+    let x=15,y=10,z=2;
+    if(x<y && x<z)
+    {
+        document.write(`${x} is smaller <br>`)
+    }
+    else if (y<x && y<z)
+    {
+        document.write(`${y} is smaller <br>`)
+    }
+    else
+    {
+        document.write(`${z} is smaller <br>`)
+    }
+    switch(p)
+    {
+        case '+':{
+            let q;
+            z=a+b;
+            document.write("the sum is",z);
+            break;
+        }
+        case '-':{
+            document.write("<br>the sum is",a-b);
+            break;
+        }
+        case '*':{
+            document.write("<br>the product is",a*b);
+            break;
+        }
+        case '/':{
+              document.write("<br>the division is",a/BeforeUnloadEvent)
+        }
+        default:{
+            document.write("<br>enter a invalid operator")
+        }
+    }
+    </script>
+</body>
+</html>
