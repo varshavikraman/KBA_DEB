@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        a=[1,2,3,4]
+        for(x in a){
+            a[x]=a[x]+2
+        }
+        document.write("New array = ",a)
+        s=0;
+        for(i of a){
+            s+=i
+        }
+        document.write("<br>sum of elements = ",s)
+        // push element to new array
+        b=[10,20,30,40]
+        z=[]
+        for (x of b){
+            if(x!=30){
+           z.push(x)
+            }
+        }
+        document.write("<br> z =",z)
+        //whether a character is in astring there or not
+        c='paste'
+        count=false;
+        for (x of c){
+            if(x=='z'){
+                document.write("<br>found")
+               count=true;
+               break;
+            }
+            
+        }
+        if(!count)
+        {
+            document.write("<br> not found")
+        }
+    </script>
+</body>
+</html>
