@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="">Name:</label>
+    <input type="text" id="name"><br>
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob"><br>
+    <button onclick="generate()">Generate ID</button>
+    <div id="idCard" style="display:none;">
+        <p id="idCard_name"></p>
+        <p id="idCard_dob"></p>
+    </div>
+    <script>
+        function generate(){
+            let name=document.getElementById("name").value;
+            let dob=document.getElementById("dob").value;
+            document.getElementById("idCard_name").textContent = "Name: " + name;
+            document.getElementById("idCard_dob").textContent = "DOB: " + dob;
+            document.getElementById("idCard").style.display = "block";
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="">Enter a number:</label>
+    <input type="text" id="number"><br>
+    <button onclick="nSquare()">Calculate Square</button>
+    <p id="demo"></p>
+    <script>
+        function nSquare(){
+            let n=document.getElementById("number").value;
+            let square=n*n;
+            document.getElementById("demo").textContent="Square: " + square;
+        }
+    </script>
+</body>
+</html>

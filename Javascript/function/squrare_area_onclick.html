@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="">enter side of square</label>
+    <input type="text"  id="side"><br>
+    <button onclick="handleclick(event)">calculate</button>
+    <p id="demo"></p>
+    <script>
+       
+        function handleclick(event){
+          const side = document.getElementById("side").value
+          const area=side*side;
+          document.getElementById("demo").innerHTML=area;
+        }
+
+    </script>
+</body>
+</html>
