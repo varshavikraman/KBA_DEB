@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <form onsubmit="generate(event)">    
+        <h1 id="school">School</h1>
+        <label for="">Name:</label>
+        <input type="text" id="name"><br>
+        <label for="">Class</label>
+        <input type="text" id="class"><br>
+        <input type="submit" value="Generate ID">
+        </form>
+    </div>
+        <div id="idCard" style="width: 200px; border-style: solid; border-radius: 5px; margin-left: 500px; padding-left: 10px; display:none;">
+            <p id="idCard_school"></p>
+            <p id="idCard_name"></p>
+            <p id="idCard_class"></p>
+        </div>
+    <script>
+         function generate(event){
+           event.preventDefault();
+           let name=document.getElementById("name").value;
+           let cat=document.getElementById("class").value;
+           document.getElementById("idCard_name").textContent="Name: " + name;
+           document.getElementById("idCard_class").textContent="Class: "+cat;
+           document.getElementById("idCard").style.display="block";
+         }
+    </script>
+</body>
+</html>

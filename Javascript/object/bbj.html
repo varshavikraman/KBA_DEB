@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const student={
+            fname:"Alia",
+            lname:"V",
+            phno:"9876543210",
+            address:{
+                housename:"Bhavana",
+                place:"pallippuram",
+                landmark:"Anoorpalli"
+            }
+        }
+        document.write("The contact no. of stutent: ", student.phno)
+        document.write("<br>The landmark of student:",student.address.landmark)
+        student.class="X A"
+        const student1={
+            fname:"Anu",
+            lname:"B",
+            phno:"8765432109"
+        }
+        const student2={
+            fname:"Varsha",
+            lname:"U",
+            phno:"7654321098"
+        }
+        const student3={
+            fname:"Vishnu",
+            lname:"V",
+            phno:"6543210987"
+        }
+        student1.address="KV Nivas";
+        student3.bloodgroup="A+ve";
+        document.write("<br> The Address of student1 :", student1.address)
+    </script>
+</body>
+</html>
