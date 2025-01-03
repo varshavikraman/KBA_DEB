@@ -26,9 +26,14 @@
            event.preventDefault();
            let name=document.getElementById("name").value;
            let cat=document.getElementById("class").value;
-           document.getElementById("idCard_name").textContent="Name: " + name;
-           document.getElementById("idCard_class").textContent="Class: "+cat;
+           const student={
+            name1:name,
+            class:cat,
+           }
+           document.getElementById("idCard_name").textContent="Name: " +student.name1;
+           document.getElementById("idCard_class").textContent="Class: "+student.class;
            document.getElementById("idCard").style.display="block";
+
          }
     </script>
 </body>

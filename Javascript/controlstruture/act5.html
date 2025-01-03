@@ -28,7 +28,29 @@
         c=a.concat(b);
         document.write("<br>c = ",c)
         //JS program to read an array and sort in ascending and descending order
-        
+        a=[90,27,72,9]
+        l=a.length
+        document.write("<br> a =",a)
+        for (i=0;i<l;i++){
+            for(j=i;j<l;j++){
+                if(a[i]<a[j]){
+                    temp=a[i];
+                    a[i]=a[j];
+                    a[j]=temp;
+                }
+            }
+        }
+        document.write("<br> array a in ascending order = " ,a)
+        for (i=0;i<l;i++){
+            for(j=i;j<l;j++){
+                if(a[i]>a[j]){
+                    temp=a[i];
+                    a[i]=a[j];
+                    a[j]=temp;
+                }
+            }
+        }
+        document.write("<br> array a in decending order = " ,a)
         //Write a program to read the array [1,6,7,8,2,3,4,2,2].Find the occurance of 2 in this array.
         a=[1,6,7,8,2,3,4,2,2];
         count=0;
