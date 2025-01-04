@@ -18,13 +18,13 @@
         while(i<50)
             {
               i++;
-              document.write(" "+ i+",")
+              document.write(" "+ i+" ")
               s=s+i;
               c++;
             }
             let avg=s/c;
             document.write("<br> Sum: ",s)
-            document.write("<br> Average: ",avg)
+            document.write("<br> Average: "+avg+"<br><br>")
             
         }
         {
@@ -43,37 +43,38 @@
             let n=5;
             for(let i = 1; i <= 10; i++){
                 let m=n*i;
-                document.write(`<br>${n}x${i}=${m}`)
+                document.write("<br>"+`<br>${n}x${i}=${m}`)
             }
         } 
         {
-            // check whether the given string is palindrome or not
-            let st='malayalam';
-            let rest='malayalam';
-            if(st==rest){
-                document.write(`<br>${st} is a palindrome`)
+            // JS program to print reverse of a number
+            let a =963;
+            let reva=0;
+            document.write("<br><br>Number =",a);
+            while(a>0){
+                let digit = a%10;
+                reva=reva*10+digit;
+                a=(a-digit)/10;
             }
-            else{
-                document.write(`<br>${st} is a not palindrome`)
-            }
+            document.write("<br><br>Reverse of the number =",reva);
         }
         {
             // print the patterns 25,30,35,40,45,50
-            document.write("<br> The pattern is ")
+            document.write("<br><br><br> The pattern is ")
             for(i=25;i<=50;i=i+5){
                 document.write('<br>',i)
             }
         }
         {
           // print the pattern 10,100,1000,10000
-          document.write("<br> The pattern is ")
+          document.write("<br><br><br> The pattern is ")
           for(i=10;i<=10000;i=i*10){
                 document.write('<br>',i)
             } 
         }
         {
            // print the pattern 8,10,12,14,16,18,20
-           document.write("<br> The pattern is ")
+           document.write("<br><br><br> The pattern is ")
            for(i=8;i<=20;i=i+2){
             document.write('<br>',i)
            } 

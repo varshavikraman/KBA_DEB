@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function handleClick1(){
+            const qty=parseInt(document.getElementById("qty1").value)
+            const price =parseInt(document.getElementById("price1").innerText)
+            const amt= qty*price
+            console.log("the total amount of cookware:",amt)
+        }
+        function handleClick2(){
+            const qty=parseInt(document.getElementById("qty2").value)
+            const price =parseInt(document.getElementById("price2").innerText)
+            const amt= qty*price
+            console.log("the total amount of Tablecloth:",amt)
+        }
+        function handleClick3(){
+            const qty=parseInt(document.getElementById("qty3").value)
+            const price =parseInt(document.getElementById("price3").innerText)
+            const amt= qty*price
+            console.log("the total amount of Flowervase:",amt)
+        }
+        function handleCheckout() {
+            const qty1 = parseInt(document.getElementById("qty1").value)
+            const price1 = parseInt(document.getElementById("price1").innerText)
+            const price2 = parseInt(document.getElementById("price2").innerText)
+
+            const qty3 = parseInt(document.getElementById("qty3").value)
+            const price3 = parseInt(document.getElementById("price3").innerText)
+
+            const total = (qty1 * price1) + (qty2 * price2) + (qty3 * price3);
+            console.log("Grand Total Amount:", total);
+           
+        }
+    </script>
+</head>
+<body>
+    <div id="item1">
+    <label>Cookware</label>
+    <input type="number" placeholder="quantity" id="qty1" required>
+    <label id="price1">2000</label>
+    <button onclick="handleClick1()">Add to Cart</button><br>
+    </div>
+    <div id="item2">
+    <label>Tablecloth</label>
+    <input type="number" placeholder="quantity" id="qty2" required>
+    <label>300</label>
+    <button onclick="handleClick2">Add to Cart</button><br>
+    </div>
+    <div id="item3">
+    <label>flowervase</label>
+    <input type="number" placeholder="quantity" id="qty3" required>
+    <label>700</label>
+    <button onclick="handleClick3">Add to Cart</button><br>
+    </div>
+    <button onclick="handleCheckout()">CheckOut</button>
+</body>
+</html>
