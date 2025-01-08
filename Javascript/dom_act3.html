@@ -9,26 +9,244 @@
     <div id="demo">
         <p>Hi, I'm Varsha Vikraman</p>
     </div>
-    <div id="cinema-list"></div>
+
+    <div id="cinema-list">
+        <h3>List of Cinemas</h3>
+    </div>
+
+    <div>
+        <h3>Programming Language Class</h3>
+        <label>Select Language:</label>
+        <select id="dropdown"></select>
+    </div>
+
+    <div id="rating"></div>
+
+    <div>
+        <h3>Select Your Favorite Cake</h3>
+        <label>Choose a Cake:</label>
+        <select id="cake"></select>
+    </div>
+   
+    <div id="name"></div>
+    
+    <div id="Combine"></div>
+
+    <div>Updated Text:</div>
+    <p id="update"></p>
+
     <script>
-        //print a para about yourself using createElement() , textContent & append child.
-        let element1=document.createElement("p");
-        element1.textContent="I'm from Trivandrum";
-        document.getElementById("demo").appendChild(element1);
-        let element2=document.createElement("p");
-        element2.textContent="I'm currently diving into the exciting world of blockchain technology at Digital University Kerala";
-        document.getElementById("demo").appendChild(element2);
-        //Make an unordered list of cinemas on html page using javascript
-        const cinemas = ["Manjummel Boys","Aavesham","Premalu","Kishkindha Kaandam","Bramayugam","Marco"];
+        // print a para about yourself using createElement() , textContent & append child.
+
+        let about1=document.createElement("p");
+        about1.textContent="I'm from Trivandrum";
+        document.getElementById("demo").appendChild(about1);
+
+        let about2=document.createElement("p");
+        about2.textContent="I'm currently diving into the exciting world of blockchain technology at Digital University Kerala";
+        document.getElementById("demo").appendChild(about2);
+
+        // Make an unordered list of cinemas on html page using javascript
+        
         const list = document.getElementById("cinema-list");
         const ul = document.createElement("ul");
-        for (let i = 0; i < cinemas.length; i++)
-        {
-            const li = document.createElement("li");
-            li.textContent = cinema; 
-            ul.appendChild(li); 
-        }
+
+        const cinema1 = document.createElement("li");
+        cinema1.textContent = "Manjummel Boys";
+        ul.appendChild(cinema1);
+
+        const cinema2 = document.createElement("li");
+        cinema2.textContent = "Aavesham";
+        ul.appendChild(cinema2);
+
+        const cinema3 = document.createElement("li");
+        cinema3.textContent = "Premalu";
+        ul.appendChild(cinema3);
+
+        const cinema4 = document.createElement("li");
+        cinema4.textContent = "Kishkindha Kaandam";
+        ul.appendChild(cinema4);
+
+        const cinema5 = document.createElement("li");
+        cinema5.textContent = "Bramayugam";
+        ul.appendChild(cinema5);
+
+        const cinema6 = document.createElement("li");
+        cinema6.textContent = "Marco";
+        ul.appendChild(cinema6);
+
         list.appendChild(ul);
-    </script>
+        
+        // Create a dropdown for programming language classes offered on html page using javascript.
+
+        const dropdown = document.getElementById('dropdown');
+
+        const option1 = document.createElement('option');
+        option1.textContent = 'Python';
+        dropdown.appendChild(option1);
+
+        const option2 = document.createElement('option');
+        option2.textContent = 'JavaScript';
+        dropdown.appendChild(option2);
+
+        const option3 = document.createElement('option');
+        option3.textContent = 'Java';
+        dropdown.appendChild(option3);
+
+        const option4 = document.createElement('option');
+        option4.textContent = 'C++';
+        dropdown.appendChild(option4);
+
+        const option5 = document.createElement('option');
+        option5.textContent = 'C';
+        dropdown.appendChild(option5);
+
+        // On the KBA-courses site you created add a radio button showing your experience on KBA(like good, bad, average).
+
+        let title = document.createElement("h3");
+        title.innerHTML = "Share Your Experience with KBA Courses";
+        document.getElementById("rating").appendChild(title);
+
+        let radio1=document.createElement('input')
+        radio1.type='radio'
+        radio1.name='experience'
+        radio1.id='good'
+        radio1.id='Good'
+        document.getElementById('rating').appendChild(radio1);
+
+        let element1=document.createElement('label')
+        element1.innerHTML='Good'
+        document.getElementById('rating').appendChild(element1);
+
+        let radio2=document.createElement('input')
+        radio2.type='radio'
+        radio2.name='experience'
+        radio2.id='average'
+        radio2.id='Average'
+        document.getElementById('rating').appendChild(radio2);
+
+        let element2=document.createElement('label')
+        element2.innerHTML='Average'
+        document.getElementById('rating').appendChild(element2);
+
+        let radio3=document.createElement('input')
+        radio3.type='radio'
+        radio3.name='experience'
+        radio3.id='bad'
+        radio3.id='Bad'
+        document.getElementById('rating').appendChild(radio3);
+
+        let element3=document.createElement('label')
+        element3.innerHTML='Bad'
+        document.getElementById('rating').appendChild(element3);
+         
+        // Create a dropdown for list of cakes and print the value of second option.
+
+        const cakeDropdown = document.getElementById('cake');
+
+        let optionA = document.createElement('option');
+        optionA.innerHTML = 'Blackforest Cake';
+        optionA.value = 'black';
+        cakeDropdown.appendChild(optionA);
+
+        let optionB = document.createElement('option');
+        optionB.innerHTML = 'Whiteforest Cake';
+        optionB.value = 'white';
+        cakeDropdown.appendChild(optionB);
+
+        let optionC = document.createElement('option');
+        optionC.innerHTML = 'Redvelvet Cake';
+        optionC.value = 'red';
+        cakeDropdown.appendChild(optionC);
+
+        let optionD = document.createElement('option');
+        optionD.innerHTML = 'Cheesecake';
+        optionD.value = 'cheese';
+        cakeDropdown.appendChild(optionD);
+
+        // Print your full name storing fname & lname. Print in Uppercase.
+
+        let fname = "Varsha";
+        let lname = "Vikraman";
+
+        let fullName = (fname+" "+lname).toUpperCase();
+
+        document.write('<br>',fullName)
+       
+
+        //“You can study anything if you have a will to do it”.Take the substrings “You can study”, “you”,”will”,”do it” and combine as a sentence.
+        let sentence = "You can study anything if you have a will to do it";
+
+        let s1 = sentence.substring(0, 12); 
+        let s2 = sentence.substring(26, 30);
+        let s3 = sentence.substring(37, 41); 
+        let s4 = sentence.substring(45); 
+
+        let newSentence = `${s1} ${s2} ${s3} ${s4}.`;
+
+        const result = document.getElementById('Combine');
+        result.innerText = newSentence;
+        
+        // “MongoDB is a decentralised distributed ledger . MongoDB can eliminate centralisation.” Replace MongoDB with Blockchain.
+       
+        let originalText = 'MongoDB is a decentralised distributed ledger. MongoDB can eliminate centralisation.'
+        let updatedText = originalText.replace(/MongoDB/g, "Blockchain");
+        document.getElementById('update').innerText = updatedText;
+
+
+        // Print the string “MongoDB is a decentralised distributed ledger” using substring/substr.
+
+        let text = "MongoDB is a decentralised distributed ledger";
+
+        const part1 = text.substr(0, 7);  
+        const part2 = text.substr(7, 4); 
+        const part3 = text.substr(11, 2);
+        const part4 = text.substr(13, 13); 
+        const part5 = text.substr(26, 12);
+        const part6 = text.substr(38); 
+        const newText = part1 + part2 + part3 + part4 + part5 + part6;
+        document.write("<br><br>",newText)
+
+       // Compare “Hello World” & “hEllO World” and display the result & its type.
+
+        const str1 = "Hello World";
+        const str2 = "hEllO World";
+
+        const str12 = str1 === str2;
+
+        document.write("<br><br>Comparison Result:", str12); 
+        document.write(" <br>Type of Result:", typeof str12);
+
+        //Print this statement “ I am ___ yrs of old and my brother is 10 yrs older to me. He is now __ years old.”
+
+        const myAge = 26;
+        const brotherAge = myAge + 2;
+
+        const statement = `I am ${myAge} yrs of old and my brother is 2 yrs older to me. He is now ${brotherAge} years old.`;
+        document.write('<br><br>',statement);
+
+        //Consider this statement “ My name is ________.(declaring fname & lastname in uppercase). I live in ____(uppercase).
+        let firstname = "varsha";  
+        let lastname = "vikraman";
+        let place = "trivandrum";  
+
+        upperFirstname = firstname.toUpperCase();
+        upperLastname = lastname.toUpperCase();
+        upperPlace = place.toUpperCase();
+
+        statement2 = `My name is ${upperFirstname} ${upperLastname}. I live in ${upperPlace}.`;
+        document.write('<br><br>',statement2)
+
+        // Consider these two statements “I like to play video games.” “I don’t like Hide & seek”. Change 'like' to 'don't like'.
+
+        let smt1 = "I like to play video games.";
+        let smt2 = "I don’t like Hide & seek.";
+
+        smt1 = smt1.replace('like', "don't like");
+        smt2 = smt2.replace("don't like", 'like');
+
+        document.write("<br><br>Statement 1:", smt1);
+        document.write("<br>Statement 2:", smt2);
+</script>
 </body>
 </html>

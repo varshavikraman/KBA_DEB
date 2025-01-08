@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Check if a Number is a Multiple of 3 or 7</h3>
+    <p id="multiple"></p>
+
+    <h3>Find the Sign of the Product of Three Numbers</h3>
+    <p id="sign"></p>
+
+    <h2>Check Your CGPA</h2>
+    <p id="CGPA"></p>
+
+    <h3>Name of the month by a given Number</h3>
+    <p id="Month"></p>
+
+    <h3>Temperature</h3>
+    <p id="temp"></p>
+
+    <script>
+        // JavaScript program to check whether a given positive number is a multiple of 3 or 7
+        let n=21;
+    
+        if (n%3===0 || number%7===0) {
+        document.getElementById("multiple").innerHTML=`${n} is a multiple of 3 or 7.`;
+        } else {
+        document.getElementById('multiple').innerHTML=`${n} is NOT a multiple of 3 or 7.`;
+        }
+
+        //  JavaScript conditional statement to find the sign of the product of three numbers. Display with the specified sign.
+
+        let n1 = 15;
+        let n2 = -30;
+        let n3 = 11;
+        let pdt = n1 * n2 * n3;
+
+        let sign;
+        if (pdt > 0) {
+            sign = "positive";
+        } else if (pdt < 0) {
+            sign = "negative";
+        } else {
+            sign = "zero";
+        }
+
+        document.getElementById("sign").innerHTML = `The product of ${n1}, ${n2}, and ${n3} is ${pdt} and it is a ${sign}.`;
+
+        // program using switch case to check the CGPA on given condition.
+        let cgpa = 7; 
+        let p='*';
+
+        switch (cgpa) {
+            case 7:
+                p = "You got 7 CGPA.";
+                break;
+            case 8:
+                p = "You got 8 CGPA.";
+                break;
+            case 10:
+                p = "You got 10 CGPA.";
+                break;
+            default:
+                p = "CGPA is not in the specified range.";
+        }
+
+        document.getElementById("CGPA").innerHTML = p;
+
+        // program to print the month name by given number using switch
+
+        let monthNumber = 8; 
+
+        let monthName = '*';
+
+        switch (monthNumber) {
+            case 1:
+                monthName = "January";
+                break;
+            case 2:
+                monthName = "February";
+                break;
+            case 3:
+                monthName = "March";
+                break;
+            case 4:
+                monthName = "April";
+                break;
+            case 5:
+                monthName = "May";
+                break;
+            case 6:
+                monthName = "June";
+                break;
+            case 7:
+                monthName = "July";
+                break;
+            case 8:
+                monthName = "August";
+                break;
+            case 9:
+                monthName = "September";
+                break;
+            case 10:
+                monthName = "October";
+                break;
+            case 11:
+                monthName = "November";
+                break;
+            case 12:
+                monthName = "December";
+                break;
+            default:
+                monthName = "Invalid month number. Please enter a number between 1 and 12.";
+        }
+
+        document.getElementById("Month").innerHTML = `Month ${monthNumber}: ${monthName}`;
+
+        //  program to calculate the root of a quadratic equation.
+
+        let x=2;
+        let y=9;
+        let z=5;
+        let d=y*y-(4*x*z);
+        let root1=(-y+Math.sqrt(d))/(2*x);
+        let root2=(-y-Math.sqrt(d))/(2*x);
+        if(d>0){
+            document.write(`The roots of a quadratic equation are ${root1} and ${root2}`)
+        }
+        else if(d==0){
+            document.write(`The root of a quadratic equation are ${root1}`)
+        }
+        else{
+            document.write('No realroots')
+        }
+
+        /* program to read temperature in centigrade and display a suitable message according to the temperature state below:
+            Temp < 0 then Freezing weather
+            Temp 0-10 then Very Cold weather
+            Temp 10-20 then Cold weather
+            Temp 20-30 then Normal in Temp
+            Temp 30-40 then Its Hot
+            Temp >=40 then Its Very Hot*/
+
+            let temp = 25; 
+
+        let a='*';
+
+        if (temp < 0) {
+            a = "Freezing weather";
+        } else if (temp >= 0 && temp <= 10) {
+            a = "Very Cold weather";
+        } else if (temp > 10 && temp <= 20) {
+            a = "Cold weather";
+        } else if (temp > 20 && temp <= 30) {
+            a = "Normal Temperature";
+        } else if (temp > 30 && temp <= 40) {
+            a = "It's Hot";
+        } else {
+           a = "It's Very Hot";
+        }
+
+        document.getElementById("temp").innerHTML = `Temperature: ${temp} °C and it is a ${a}`;
+    </script>
+</body>
+</html>

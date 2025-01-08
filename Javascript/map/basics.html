@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map</title>
+    <script>
+        function mapMethod(){
+        /*const mymap=new Map();
+        mymap.set("name","Anu");
+        mymap.set("age",20);
+        mymap.set("Employee",true);
+        mymap.set("role",["admin","user"]) */
+        
+        /*                              
+        console.log(mymap);
+        document.getElementById("get").innerHTML="Name: "+mymap.get("name");
+        document.getElementById("has").innerHTML="Age is Written :"+mymap.has("age");
+        document.getElementById("delete").innerHTML="delete the employee detail :"+mymap.delete("Employee")
+        console.log(mymap);
+        let role=mymap.get("role");
+        document.getElementById("role").innerHTML="insert comma : "+role.join()
+        
+        mymap.clear();
+        console.log(mymap) */
+
+        /* we can also instalise without set operation*/
+
+            const mymap=new Map([
+            ["name","anu"],
+            ["age",20],
+            ["employee",true],
+            ["role",["admin","user"]]
+            ])
+       
+        // Map Iteration
+        let output ='';
+        mymap.forEach((value,key)=>{
+            if(Array.isArray(value)){
+                output +=key+' = '+value.join(' and ')+'<br>'
+            }
+            else
+            output +=key+'='+value+'<br>'
+        });
+        document.getElementById('Iteration').innerHTML=output;
+        }
+    </script>
+</head>
+<body>
+    <h1>Map Method</h1>
+    <h3>Map Operation</h3>
+    <button onclick="mapMethod()">Map Method</button>
+    <div id="get"></div>
+    <div id="has"></div>
+    <div id="delete"></div>
+    <div id="clear"></div>
+    <div id="role"></div>
+    <h2>Map Iteration</h2>
+    <div id="Iteration"></div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function calculatePrice(){
+            const fruitmap=new Map([
+                ["Apple",{price:180,qty:3}],
+                ["Mango",{price:200,qty:4}],
+                ["Orange",{price:100,qty:2}],
+                ["Pappaya",{price:80,qty:1}],
+            ]);
+
+            let output="Fruit details :";
+            let TotalPrice=0;
+
+            fruitmap.forEach((value,key)=>{
+                const FruitPrice=value.price*value.qty;
+                TotalPrice+=FruitPrice;
+                output+=`${key}:Price = Rs.${value.price}, Quantity =${value.qty}, Price =Rs.${FruitPrice}<br>`;
+            });
+            output+=`Total Price : Rs.${TotalPrice}`;
+            document.getElementById('output').innerHTML=output; 
+        }
+    </script>
+</head>
+<body>
+    <h2>Add to Cart</h2>
+    <h3>Total price</h3>
+    <button onclick="calculatePrice()">Calculate</button>
+    <div id="output"></div>
+</body>
+</html>
