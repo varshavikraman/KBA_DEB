@@ -82,23 +82,28 @@
         const dropdown = document.getElementById('dropdown');
 
         const option1 = document.createElement('option');
-        option1.textContent = 'Python';
+        option1.innerHTML = 'Python';
+        option1.value = 'python';
         dropdown.appendChild(option1);
 
         const option2 = document.createElement('option');
-        option2.textContent = 'JavaScript';
+        option2.innerHTML = 'JavaScript';
+        option2.value='javascript';
         dropdown.appendChild(option2);
 
         const option3 = document.createElement('option');
-        option3.textContent = 'Java';
+        option3.innerHTML = 'Java';
+        option3.value='java';
         dropdown.appendChild(option3);
 
         const option4 = document.createElement('option');
-        option4.textContent = 'C++';
+        option4.innerHTML = 'C++';
+        option4.value='C++'
         dropdown.appendChild(option4);
 
         const option5 = document.createElement('option');
-        option5.textContent = 'C';
+        option5.innerHTML = 'C';
+        option5.value='c';
         dropdown.appendChild(option5);
 
         // On the KBA-courses site you created add a radio button showing your experience on KBA(like good, bad, average).
@@ -107,10 +112,10 @@
         title.innerHTML = "Share Your Experience with KBA Courses";
         document.getElementById("rating").appendChild(title);
 
+
         let radio1=document.createElement('input')
         radio1.type='radio'
         radio1.name='experience'
-        radio1.id='good'
         radio1.id='Good'
         document.getElementById('rating').appendChild(radio1);
 
@@ -118,10 +123,10 @@
         element1.innerHTML='Good'
         document.getElementById('rating').appendChild(element1);
 
+
         let radio2=document.createElement('input')
         radio2.type='radio'
         radio2.name='experience'
-        radio2.id='average'
         radio2.id='Average'
         document.getElementById('rating').appendChild(radio2);
 
@@ -129,10 +134,10 @@
         element2.innerHTML='Average'
         document.getElementById('rating').appendChild(element2);
 
+
         let radio3=document.createElement('input')
         radio3.type='radio'
         radio3.name='experience'
-        radio3.id='bad'
         radio3.id='Bad'
         document.getElementById('rating').appendChild(radio3);
 
