@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fruit Array</title>
+</head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruit Array</title>
+</head>
+<body>
+    <h1>Fruit Array</h1>
+    <label for="fruitInput">Fruit Name:</label>
+    <input type="text" id="fruitInput" placeholder="Enter a fruit name">
+    <button onclick="addFruit()">Add Fruit</button>
+  
+    <select id="index">
+    
+    </select>
+    <button onclick="displayFruit()">Submit</button>
+    <p id="selectedFruit"></p>
+  
+    <script>
+      let fruits = [];
+  
+      function addFruit() {
+        const fruitInput = document.getElementById("fruitInput");
+        const fruit = fruitInput.value.trim();
+  
+        if (fruit) {
+          fruits.push(fruit);
+          updateOptions();
+          fruitInput.value = ""; 
+        }
+      }
+  
+      function updateOptions() {
+        const indexSelect = document.getElementById("index");
+        indexSelect.innerHTML = ""; 
+  
+        fruits.forEach((_, i) => {
+          const option = document.createElement("option");
+          option.value = i;
+          option.textContent = i;
+          indexSelect.appendChild(option);
+        });
+      }
+  
+      function displayFruit() {
+        const index = document.getElementById("index").value;
+        const selectedFruit = fruits[index];
+        document.getElementById("selectedFruit").textContent =`Selected Fruit: ${selectedFruit}`;
+      }
+    </script>
+</body>
+</html>

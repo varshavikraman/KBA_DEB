@@ -10,16 +10,16 @@ const tArray = [];
 function showMenu() {
     console.log(`
 Task Manager  
-1. Add Task
-2. List
-3. Exit`);
+A. Add Task
+B. List
+C. Exit`);
 
-    rl.question('Choose your option (1, 2 or 3): ', handleOption);
+    rl.question('Choose your option (A, B or C): ', handleOption);
 }
 
 function handleOption(option) {
     switch (option.trim()) {
-        case '1':
+        case 'A':
             rl.question('Enter a task: ', (task) => {
                 if (task.trim() !== '') {
                     tArray.push(task.trim());
@@ -30,12 +30,18 @@ function handleOption(option) {
                 showMenu();
             });
             break;
-        case '2':
-            const taskList = tArray.length ? tArray.join(', ') : 'No task';
-            console.log('Tasks:', taskList);
+        case 'B':
+             if(tArray.length !==0) {
+                tArray.forEach((task,index)=>{
+                    console.log(`${index+1}.${task}`)
+                })
+             }
+             else{
+                console.log('No Task Added')
+             }
             showMenu();
             break;
-        case '3':
+        case 'C':
             console.log('Exiting Task Manager. Goodbye!');
             rl.close();
             break;
