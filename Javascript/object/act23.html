@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ID Card</title>
+</head>
+<body>
+    <div id="details" style="display: block;">
+        <h2>Person Details Form</h2>
+    <form onsubmit="generate(event)">
+        <label>Name</label><br>
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" placeholder="Enter your first name" required><br>
+
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" placeholder="Enter your last name" required><br>
+
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob" required><br>
+
+        <label>Address</label><br>
+        <label for="addressLine1">Address Line 1</label>
+        <input type="text" id="addressLine1" placeholder="Enter address line 1" required>
+
+        <label for="addressLine2">Address Line 2</label>
+        <input type="text" id="addressLine2" placeholder="Enter address line 2 (optional)">
+
+        <label for="city">City</label>
+        <input type="text" id="city" placeholder="Enter city" required>
+
+        <label for="state">State</label>
+        <input type="text" id="state" placeholder="Enter state" required>
+
+        <label for="pin">Pin Code</label>
+        <input type="text" id="pin" placeholder="Enter zip code" required><br>
+
+        <label for="phone">Phone Number</label>
+        <input type="text" id="phone" placeholder="Enter phone number" required><br>
+
+        <button type="submit">Generate ID Proof</button>
+    </form>
+    </div>   
+    <div id="idProof" style="display:none; border-style: solid; border-radius: 10px; width: 250px; padding-left: 10px;">
+        <h2>ID Proof</h2>
+        <p id="idName"></p>
+        <p id="idDob"></p>
+        <p id="idAddress"></p>
+        <p id="idPhone"></p>
+    </div>
+
+    <script>
+        function generate(event) {
+            event.preventDefault();
+            
+            const firstName = document.getElementById("firstName").value;
+            const lastName = document.getElementById("lastName").value;
+            const dob = document.getElementById("dob").value;
+            const addressLine1 = document.getElementById("addressLine1").value;
+            const addressLine2 = document.getElementById("addressLine2").value;
+            const city = document.getElementById("city").value;
+            const state = document.getElementById("state").value;
+            const pin = document.getElementById("pin").value;
+            const phone = document.getElementById("phone").value;
+
+           
+            const person = {
+                name:{firstName,
+                     lastName
+                },
+                dob,
+                address: {
+                    line1: addressLine1,
+                    line2: addressLine2,
+                    city,
+                    state,
+                    pin
+                },
+                phone
+            };
+
+            document.getElementById("details").style.display='none';
+            
+            document.getElementById("idName").textContent = `Name: ${person.name.firstName} ${person.name.lastName}`;
+            document.getElementById("idDob").textContent ='Date of Birth: '+ person.dob;
+            document.getElementById("idAddress").textContent = `Address: ${person.address.line1}, ${person.address.line2}, ${person.address.city}, ${person.address.state} Pin No- ${person.address.pin}`;
+            document.getElementById("idPhone").textContent ='Phone No: '+ person.phone;
+
+            document.getElementById("idProof").style.display = "block";
+        }    
+    </script>
+</body>
+</html>
