@@ -47,6 +47,22 @@
             }
         } 
         {
+        // check whether the given string is palindrome or not
+           
+           let str='anna';
+           let revstr='';
+           for(i=str.length-1;i>=0;i--){
+            revstr+=str[i];
+
+           }  
+         if(str===revstr){
+            document.write(`<br> ${str} is a palindrome`)
+         }
+         else{
+            document.write(`<br>${str} is not a palindrome`)
+         }
+        }
+        {
             // JS program to print reverse of a number
             let a =963;
             let reva=0;

@@ -1,8 +1,24 @@
 import express from 'express';
+import dotenv from 'dotenv';
+import { userauth } from './Router/userauth.js';
 
-const app=express();//we use any variable name (app or any name)
+dotenv.config();
 
-app.listen(8000,function(){
+const app=express();//we set any variable name (app or any name)
+
+app.use('/',userauth)
+
+app.get('/',function(req,res){
+    console.log('Hello');
+    
+    res.send("Hello Everyone")
+})
+
+/* app.listen(8000,function(){
     console.log('server is listening at 8000');
     
-});//(8000) is the port
+});//(8000) is the port */
+app.listen(process.env.PORT,function(){
+     console.log(`server is listening at ${process.env.PORT}`);
+     
+})
