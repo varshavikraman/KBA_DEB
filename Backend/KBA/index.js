@@ -1,4 +1,4 @@
-import express from 'express';
+import express, {json} from 'express';
 import dotenv from 'dotenv';
 import { userauth } from './Router/userauth.js';
 
@@ -6,12 +6,18 @@ dotenv.config();
 
 const app=express();//we set any variable name (app or any name)
 
-app.use('/',userauth)
+app.use(json());
+
+app.use('/',userauth);
 
 app.get('/',function(req,res){
     console.log('Hello');
     
     res.send("Hello Everyone")
+})
+
+app.post('/',function(req,res){
+    res.send("Hello Everyone");
 })
 
 /* app.listen(8000,function(){

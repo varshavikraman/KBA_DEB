@@ -1,6 +1,6 @@
 const p = require('lodash')
 
-const add1=require('./addition')
+const sum=require('./addition.js')
 console.log('Hello World');
 let a='Node JS';
 console.log(`Hello ${a}`);
@@ -15,4 +15,4 @@ for(i=0;i<10;i++)
 let c=[1,2,3,4,5];
 console.log(p.reverse(c)); 
 console.log(p.capitalize('hello world'));
-console.log(add1.add(3,5));
+console.log(sum.add(3,5));
