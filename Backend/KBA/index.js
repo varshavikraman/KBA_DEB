@@ -1,6 +1,7 @@
 import express, {json} from 'express';
 import dotenv from 'dotenv';
 import { userauth } from './Router/userauth.js';
+import { adminauth } from './Router/adminauth.js';
 
 dotenv.config();
 
@@ -9,6 +10,7 @@ const app=express();//we set any variable name (app or any name)
 app.use(json());
 
 app.use('/',userauth);
+app.use('/',adminauth);
 
 app.get('/',function(req,res){
     console.log('Hello');
