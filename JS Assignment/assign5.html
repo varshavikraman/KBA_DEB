@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate Area</title>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          display: flex;
+          justify-content: center;
+          text-align: center;
+        }
+        .area {
+            height: 450px;
+            width: 500px;
+            margin-top: 100px;
+            padding-top: 90px;
+            background-color: rgb(252, 206, 198);
+            border-radius: 20px;
+            box-shadow: 10px;
+            box-shadow: 10px 10px 20px 5px rgba(247, 185, 144, 0.5);
+        }
+        input {
+          margin: 5px;
+          padding: 5px ;
+          width: 100px;
+        }
+        button {
+          margin: 5px;  
+          padding: 10px 15px;
+          border-radius: 10px;
+          cursor: pointer;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="area">
+    <div>
+        <label>Enter Side of Square:</label>
+        <input type="number" id="side"><br>
+        <button onclick="squareArea()">Area Of Square</button><br><br>
+        <p id="result1"></p>
+    </div>
+
+    <div>
+        <label>Enter Length:</label>
+        <input type="number" id="length"><br>
+        <label>Enter Breath:</label>
+        <input type="number" id="breath"><br>
+        <button onclick="rectangleArea()">Area of Rectangle</button><br><br>
+        <p id="result2"></p>
+    </div>
+    
+    <div>
+        <label>Enter Radius:</label>
+        <input type="number" id="radius"><br>
+        <button onclick="circleArea()">Area Of Circle</button><br><br>
+        <p id="result3"></p>
+    </div>
+    </div>
+    <script>
+        function squareArea(){
+            let squareSide = parseFloat(document.getElementById('side').value);
+            if(isNaN(squareSide) || squareSide <=0){
+                document.getElementById('result1').textContent = "Please enter a valid positive number for the sides.";
+            return;
+            }else{
+            let areaSquare = squareSide*squareSide;
+            document.getElementById('result1').textContent=`Area of the square with sides ${squareSide} = ${areaSquare}`
+            }
+        }
+
+        function rectangleArea(){
+            let rectLength = parseFloat(document.getElementById('length').value);
+            let rectBreath = parseFloat(document.getElementById('breath').value);
+            if(isNaN(rectLength) || isNaN(rectBreath) || rectLength <= 0 || rectBreath <= 0){
+                document.getElementById('result2').textContent = "Please enter a valid positive number.";
+                return;
+            }else{
+            let areaRectangle = rectLength*rectBreath;
+            document.getElementById('result2').textContent = `Area of the Rectangle = ${areaRectangle}`
+            }
+        }
+
+        function circleArea(){
+            let circleRadius = parseFloat(document.getElementById('radius').value);
+        if(isNaN(circleRadius) || circleRadius <= 0) {
+            document.getElementById('result3').textContent = "Please enter a valid positive number for the radius.";
+            return;
+        }else{
+            let areaCircle = Math.PI * Math.pow(circleRadius, 2);
+            document.getElementById('result3').textContent = `Area of the circle with radius ${circleRadius} = ${areaCircle.toFixed(2)}`;
+        }
+        }
+    </script> 
+</body>
+</html>

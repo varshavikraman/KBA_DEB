@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse Number</title>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          display: flex;
+          justify-content: center;
+          text-align: center;
+        }
+        div {
+            height: 200px;
+            width: 500px;
+            margin-top: 100px;
+            padding-top: 90px;
+            background-color: rgb(252, 206, 198);
+            border-radius: 20px;
+            box-shadow: 10px;
+            box-shadow: 10px 10px 20px 5px rgba(247, 185, 144, 0.5);
+        }
+        input {
+          margin: 5px;
+          padding: 5px ;
+          width: 100px;
+        }
+        button {
+          margin: 5px;  
+          padding: 10px 15px;
+          border-radius: 10px;
+          cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <label>Enter a number:</label>
+        <input type="number" id="Number"><br><br>
+        <button onclick="reverseNo()">Reverse Number</button>
+        <p id="result"></p>
+    </div>
+    <script>
+        function reverseNo() {
+        let num = parseInt(document.getElementById('Number').value);
+        if (isNaN(num)) {
+            document.getElementById('result').textContent = "Please enter a valid number.";
+            return;
+        }
+
+        let revNum = 0; 
+
+        while (num > 0) {
+            let digit = num % 10;      
+            revNum = revNum * 10 + digit; 
+            num = Math.floor(num / 10);  
+        }
+
+        document.getElementById('result').textContent = `Reversed Number: ${revNum}`;
+    }
+    </script>
+</body>
+</html>

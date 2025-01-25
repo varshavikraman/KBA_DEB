@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Maximum</title>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          display: flex;
+          justify-content: center;
+          text-align: center;
+        }
+        div {
+            height: 200px;
+            width: 500px;
+            margin-top: 100px;
+            padding-top: 90px;
+            background-color: rgb(241, 253, 230);
+            border-radius: 20px;
+            box-shadow: 10px;
+            box-shadow: 10px 10px 20px 5px rgba(190, 247, 144, 0.5);
+        }
+        input {
+          margin: 5px;
+          padding: 5px ;
+          width: 100px;
+        }
+        button {
+          margin: 5px;  
+          padding: 10px 15px;
+          border-radius: 10px;
+          cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <label>Enter Elements:</label>
+        <input type="text" id="arrayInput" placeholder="e.g., 1, 2, 3"><br><br>
+        <button onclick="findLargest()">Maximum</button><br><br>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function findLargest() {
+            let elementInput = document.getElementById('arrayInput').value;
+
+            let elementArray = elementInput.split(',').map(Number);
+
+            if (elementInput.trim() === "" || elementArray.some(isNaN)) {
+                document.getElementById('result').textContent = "Please enter valid numeric elements.";
+                return;
+            }
+
+            let largest = Math.max(...elementArray);
+
+            document.getElementById('result').textContent = `The largest element is: ${largest}`;
+        }
+    </script>
+</body>
+</html>

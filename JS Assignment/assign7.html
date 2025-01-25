@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Element</title>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          display: flex;
+          justify-content: center;
+          text-align: center;
+        }
+        div {
+            height: 700px;
+            width: 500px;
+            margin-top: 100px;
+            padding-top: 90px;
+            background-color: rgb(244, 217, 247);
+            border-radius: 20px;
+            box-shadow: 10px;
+            box-shadow: 10px 10px 20px 5px rgba(180, 83, 189, 0.5);
+        }
+        input {
+          margin: 5px;
+          padding: 5px ;
+          width: 100px;
+        }
+        button {
+          margin: 5px;  
+          padding: 10px 15px;
+          border-radius: 10px;
+          cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <label>Enter element:</label>
+        <input type="text" id="valueInput" placeholder="Enter a value"><br><br>
+        <button onclick="saveValue()">Save</button>
+        <button onclick="printArray()">Print Array</button>
+        <p id="result"></p><br><br>
+
+        <label>Select Index:</label>
+        <select name="arrayIndex" id="aIndex"></select>
+        <button onclick="displayIndex()">View</button>
+        <p id="IndexElement"></p><br><br>
+
+        <label>The array in sorted order: </label>
+        <button onclick="sortArray()">Sort</button>
+        <p id="arraySorted"></p><br><br>
+
+        <label for="search">Enter element to search:</label>
+        <input type="text" id="search" placeholder="Enter value to search">
+        <button onclick="arraySearch()">Search</button>
+        <p id="searchResult"></p><br><br>
+
+        <button onclick="arrayReversing()">Reverse</button>
+        <p id="reverseArray"></p>
+    </div>
+
+    <script>
+        const elementsArray = [];
+
+        function saveValue() {
+            const element = document.getElementById('valueInput').value.trim();
+
+            if (element === "") {
+                document.getElementById('result').textContent = "Please enter a valid value.";
+                return;
+            }
+
+            elementsArray.push(element);
+            document.getElementById('valueInput').value = "";
+            document.getElementById('result').textContent = `Value "${element}" saved!`;
+
+            updateIndexDropdown();
+        }
+
+        function printArray() {
+            if (elementsArray.length === 0) {
+                document.getElementById('result').textContent = "The array is empty.";
+            } else {
+                document.getElementById('result').textContent = `The Entered Array is [${elementsArray.join(", ")}]`;
+            }
+        }
+
+        function updateIndexDropdown() {
+            const dropdown = document.getElementById('aIndex');
+            dropdown.innerHTML = "";
+            elementsArray.forEach((_, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                option.textContent = index;
+                dropdown.appendChild(option);
+            });
+        }
+
+        function displayIndex() {
+            const index = parseInt(document.getElementById('aIndex').value, 10);
+
+            if (isNaN(index) || index < 0 || index >= elementsArray.length) {
+                document.getElementById('IndexElement').innerText = "Please select a valid index.";
+                return;
+            }
+
+            const element = elementsArray[index];
+            document.getElementById('IndexElement').innerText = `Element at index ${index}: ${element}`;
+        }
+
+        function sortArray() {
+            const sortedArray = elementsArray.slice().sort((a, b) => a.localeCompare(b));
+            document.getElementById('arraySorted').innerText = `Sorted array: [${sortedArray.join(", ")}]`;
+        }
+
+        function arraySearch() {
+            const searchValue = document.getElementById('search').value.trim();
+            const found = elementsArray.includes(searchValue);
+
+            if (found) {
+                document.getElementById('searchResult').innerText = `${searchValue} is present in the array.`;
+            } else {
+                document.getElementById('searchResult').innerText = `${searchValue} is not present in the array.`;
+            }
+        }
+
+        function arrayReversing() {
+            const reversedArray = [];
+            for (let i = elementsArray.length - 1; i >= 0; i--) {  
+                reversedArray.push(elementsArray[i]);  
+            }
+            document.getElementById('reverseArray').innerText = `Reversed array: [${reversedArray.join(', ')}]`;
+        }
+    </script>
+</body>
+</html>
