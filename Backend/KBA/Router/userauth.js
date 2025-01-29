@@ -2,7 +2,7 @@ import { Router } from "express";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
-import authenticate from "../MiddleWare/auth.js";
+//import authenticate from "../MiddleWare/auth.js";
 dotenv.config();
 
 const userauth = Router();
@@ -99,5 +99,7 @@ catch{
 }
     
 }) */
+
+
 
 export {userauth}
