@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-green-50">
+  
+    <div class="flex flex-col items-center justify-center space-y-4 my-10">
+        <img src="tailwind_img/atheneum-logo.png" alt="logo" class="size-12">
+        <h1 class="font-serif text-5xl font-bold text-green-800">ATHENAEUM</h1>
+    </div>
+    <form onsubmit="handleSignup(event)">
+    <div class="h-[500px] w-96 bg-white ml-[490px] my-10 rounded-2xl shadow-lg shadow-green-500">
+
+         <h2 class="text-lime-500 text-2xl font-medium text-center pt-10">Sign Up</h2>
+     
+         <div class="pt-4 pl-20">
+             <label for="name">FirstName:</label><br>
+             <input type="text" required class="border border-inherit" id="firstname">
+         </div>
+
+         <div class="pt-4 pl-20">
+          <label for="name">LastName:</label><br>
+          <input type="text" required class="border border-inherit" id="lastname">
+      </div>
+
+         <div class="pt-4 pl-20">
+             <label for="email">UserName:</label><br>
+             <input type="text" required class="border border-inherit" id="username">
+         </div>
+
+         <div class="pt-4 pl-20">
+            <label for="id">Role:</label><br>
+            <select id="role">
+              <option value="Admin">Admin</option>
+              <option value="User">User</option>
+            </select>
+         </div>
+
+         <div class="pt-4 pl-20">
+             <label for="password">Password:</label>
+             <input type="password" required class="border border-inherit" id="Password"> 
+         </div>
+
+         <div class="pt-4 pl-40">
+             <input type="submit" value="signup" class="w-16 h-8 text-green-200 bg-green-800 font-medium rounded-lg hover:bg-emerald-600 hover:text-white" >
+         </div>
+    
+         <div class="pt-4 pl-20">
+             <p>Already have an account? <a href="admin_login.html" class="text-green-700">Login</a></p>
+         </div>
+    </div>
+  </form>
+  <script>
+    async function handleSignup(event){
+      event.preventDefault();
+      console.log('hi')
+      let firstname = document.getElementById('firstname').value;
+      let lastname = document.getElementById('lastname').value;
+      let username = document.getElementById('username').value;
+      let role = document.getElementById('role').value;
+      let password = document.getElementById('Password').value;
+
+      const response = await fetch("http://127.0.0.1:8000/signup",{ 
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        firstName:firstname,
+        lastName:lastname,
+        userName:username,
+        userRole:role,
+        password:password
+      })
+    });
+    console.log(response.status);
+    if(response.status == '201'){
+      window.location.href="login.html";
+    }else if(response.status == '400'){
+      alert("This Username already exists")
+    }else{
+      alert("Try after sometimes")
+    }
+    }
+  </script>
+</body>
+</html>

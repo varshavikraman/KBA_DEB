@@ -3,11 +3,12 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 //import authenticate from "../MiddleWare/auth.js";
+import {sample} from "../Models/sample.js";
 dotenv.config();
 
 const userauth = Router();
 
-const user = new Map();
+//const user = new Map();
 //const course = new Map();
 
 userauth.get('/',(req,res)=>{
@@ -27,16 +28,26 @@ userauth.post('/signup',async(req,res)=>{
     console.log(firstName);
     // user.set(UserName,{firstName,lastName,password,userRole});
     
+    const existingUser = await sample.findOne({UserName:userName});
+
     /* const newPassword = await bcrypt.hash(password,10);
     console.log(newPassword);*/
 
-    if(user.get(userName)){
+    if(existingUser){
         res.status(400).send("This Username already exists");
     }
     else{
         const newPassword = await bcrypt.hash(password,10);
         console.log(newPassword);
-        user.set(userName,{firstName,lastName,password:newPassword,userRole});
+        //user.set(userName,{firstName,lastName,password:newPassword,userRole});
+        const newUser = new sample({
+            FirstName: firstName,
+            LastName : lastName,
+            UserName : userName,
+            Password : newPassword,
+            UserRole : userRole
+        }); // save user to MongoDB
+        await newUser.save();
         res.status(201).send("SignUp Successfully")
 
     console.log(user.get(userName));
@@ -50,21 +61,24 @@ catch{
 userauth.post('/login',async(req,res)=>{
     try{
         const {userName,password}=req.body;
-        const result = user.get(userName)
+        //const result = user.get(userName)
+        const result = await sample.findOne({UserName:userName});
         if(!result){
             res.status(400).send("Enter the valid password")
         }
         else{
-            console.log(result.password);
-            const valid = await bcrypt.compare(password,result.password);
+            console.log(result.Password);
+            const valid = await bcrypt.compare(password,result.Password);
             console.log(valid);
             if(valid){
-                const token = jwt.sign({userName:userName,userRole:result.userRole},process.env.SECRET_KEY,{expiresIn:'1h'});
+                const token = jwt.sign({userName:userName,userRole:result.UserRole},process.env.SECRET_KEY,{expiresIn:'1h'});
                 console.log(token);
                 res.cookie('authToken',token,
                     {
                         httpOnly:true
                 });
+                console.log("Logged in successfully");
+                
                 res.status(200).json({message:"Logged in successfully"});
             }
             else{
@@ -100,6 +114,9 @@ catch{
     
 }) */
 
-
+userauth.get('/logout',(req,res)=>{
+    res.clearCookie("authToken");
+    res.status(200).json({msg:"logged out successfully"})
+})
 
 export {userauth}

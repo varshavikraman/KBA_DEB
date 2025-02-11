@@ -85,6 +85,26 @@ catch{
 }
 })
 
+userauth.put('/editCourse',authenticate,(req,res)=>{
+    try{
+        if(req.Role == "Admin"){
+            const {CourseName,CertificateId,CandidateName,Grade,IssuedDate} = req.body;
+            if(certificate.get(CertificateId)){
+                certificate.set(CertificateId,{CourseName,CandidateName,Grade,IssuedDate});
+                res.status(201).json({msg: `${CertificateId} updated successfully`})
+                console.log(course.get(CertificateId))
+            }else{
+                res.status(400).json({msg :`${CertificateId} doesn't exist`}); 
+            }
+        }else{
+            res.status(403).json({msg:"You are not allowed to do this"})
+        }
+    }
+    catch{ 
+        res.status(500).send("Internal Sever Error");
+    }
+})
+
 userauth.get('/viewCertificate',(req,res)=>{
     try{
         const certiapp = req.query.certificateId
@@ -99,6 +119,11 @@ userauth.get('/viewCertificate',(req,res)=>{
     catch{
         res.status(500).send("Internal Sever Error");
     }
+})
+
+userauth.get('/logout',(req,res)=>{
+    res.clearCookie("authToken");
+    res.status(200).json({msg:"logged out successfully"})
 })
 
 export {userauth}

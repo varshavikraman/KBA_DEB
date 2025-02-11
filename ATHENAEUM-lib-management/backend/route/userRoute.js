@@ -2,6 +2,8 @@ import { Router } from "express";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
+import { book } from "./adminRoute.js";
+import authenticate from "../middleware/auth.js";
 
 
 dotenv.config();
@@ -9,6 +11,7 @@ dotenv.config();
 const userRoute = Router();
 
 const user = new Map();
+const issue = new Map();
 
 
 userRoute.post('/signup',async(req,res)=>{
@@ -79,6 +82,28 @@ userRoute.get('/getBook',(req,res)=>{
     catch{
         res.status(500).send("Internal Server Error")
     }
+})
+
+userRoute.post('/issueBook',authenticate,(req,res)=>{
+    try{
+        const {UserName:UserName,BookId,DateofIssue,DateofReturn} = req.body;
+        if(req.Role == 'admin' || req.Role == 'user'){
+            issue.set(UserName,{BookId,DateofIssue,DateofReturn});
+            res.status(201).send("Issued book successfully");
+            console.log(issue.get(UserName))
+        }else{
+            res.status(401).send("Unauthorized access");
+        }
+    }
+    catch{
+        res.status(500).send("Internal Server Error")
+    }
+        
+})
+
+userRoute.get('/logout',(req,res)=>{
+    res.clearCookie("authToken");
+    res.status(200).json({msg:"logged out successfully"})
 })
 
 export {userRoute}
