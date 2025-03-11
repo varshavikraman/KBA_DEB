@@ -9,7 +9,7 @@ const CourseGrid = ({isHome = false}) => {
   useEffect(()=>{
     const fetchCourse =async () =>{
       try {
-        const res = await fetch('http://localhost:5000/courses')
+        const res = await fetch('/api/getAllCourses')
         const data = await res.json();
         setCourses(data);
       } catch (error) {

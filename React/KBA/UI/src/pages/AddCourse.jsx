@@ -1,60 +1,135 @@
-import React from 'react'
-import Navbars from '../components/Navbars.jsx'
+import React, {useState} from 'react'
+import {useNavigate} from 'react-router-dom'
 
 const AddCourse = () => {
-  return (
-    <div>
-       <section className="bg-white mb-20">
-        <div className="container m-auto max-w-2xl py-2">
-            <div className="bg-purple-100 px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0">
+    const [courseName, setCourseName] = useState("");
+    const [courseId, setCourseId] = useState("");
+    const [courseType, setCourseType] = useState("Self-Paced");
+    const [description, setDescription] = useState("");
+    const [price, setPrice] = useState("");
+    const [courseImage, setCourseImage] = useState(null); // NEW: for the image file
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+            try {
+                // Build form data for multipart/form-data
+                    const formData = new FormData();
+                        formData.append("CourseName", courseName);
+                        formData.append("CourseId", courseId);
+                        formData.append("CourseType", courseType);
+                        formData.append("Description", description);
+                        formData.append("Price", price);
+                // Append the file. Must match .single("courseImage") in server
+                    if (courseImage) {
+                        formData.append("courseImage", courseImage);
+                    }
+
+                // POST using fetch with credentials
+                    const res = await fetch("/api/addCourse", {
+                        method: "POST",
+                        credentials: "include",
+                        // Do NOT manually set "Content-Type". The browser will do it automatically.
+                        body: formData,
+                    });
+
+                    if (!res.ok) {
+                        throw new Error("Error adding course");
+                    }
+
+                    alert("Course added successfully!");
+                    // Optionally reset form fields
+                    setCourseName("");
+                    setCourseId("");
+                    setCourseType("Self-Paced");
+                    setDescription("");
+                    setPrice("");
+                    setCourseImage(null);
+                    } catch (err) {
+                        console.error(err);
+                        alert("Something went wrong: " + err.message);
+                    }
+    };
+
+    return (
+        <div className="max-w-lg mx-auto mt-10 p-4">
+            <h2 className="text-2xl font-bold mb-4">Add Course</h2>
+                {/* Important: encType="multipart/form-data" NOT strictly required 
+                if we are using fetch + FormData, but can be used as a fallback */}
+            <form onSubmit={handleSubmit} className="space-y-4" encType="multipart/form-data">
         
-                <form>
-                    <h2 className="text-3xl text-purple-800 text-center font-semibold mb-6">Add Course</h2>
+            {/* Course Name */}
+                <input
+                    type="text"
+                    placeholder="Course Name"
+                    className="w-full border p-2"
+                    value={courseName}
+                    onChange={(e) => setCourseName(e.target.value)}
+                    required
+                />
 
-                    <div className="mb-4">
-                        <label className="block text-gray-700 font-bold mb-2">Course Name</label>
-                        <input type="text" id="title" name="title" className="border rounded w-full py-2 px-3 mb-2" placeholder="eg. Certified Blockchain Associate" required/>
-                    </div>
+            {/* Course ID */}
+                <input
+                    type="text"
+                    placeholder="Course ID"
+                    className="w-full border p-2"
+                    value={courseId}
+                    onChange={(e) => setCourseId(e.target.value)}
+                    required
+                />
 
-                    <div className="mb-4">
-                        <label className="block text-gray-700 font-bold mb-2">Course Id</label>
-                        <input type="text" id="courseId" name="courseId" className="border rounded w-full py-2 px-3 mb-2" placeholder="eg. 1" required/>
-                    </div>
+            {/* Course Type */}
+                <select
+                    className="w-full border p-2"
+                    value={courseType}
+                    onChange={(e) => setCourseType(e.target.value)}
+                >
+                    <option value="Self-Paced">Self-Paced</option>
+                    <option value="Instructor-Led">Instructor-Led</option>
+                    <option value="Hybrid">Hybrid</option>
 
-                    <div className="mb-4">
-                        <label htmlFor="type"className="block text-gray-700 font-bold mb-2">Course Type</label>
-                        <select id="type" name="type" className="border rounded w-full py-2 px-3" required>
-                            <option value="Self-Paced">Self-Paced</option>
-                            <option value="Instructor-Led">Instructor-Led</option>
-                            <option value="Hybrid">Hybrid</option>
-                        </select>
-                    </div>
+                </select>
 
-                    <div className="mb-4">
-                        <label htmlFor="description" className="block text-gray-700 font-bold mb-2">Description</label>
-                        <textarea id="description" name="description" className="border rounded w-full py-2 px-3" rows="4" placeholder="Small description on the course"></textarea>
-                    </div>
+            {/* Price */}
+                <input
+                    type="number"
+                    placeholder="Price"
+                    className="w-full border p-2"
+                    value={price}
+                    onChange={(e) => setPrice(e.target.value)}
+                    required
+                />
 
-                    <div className="mb-4">
-                        <label htmlFor="type" className="block text-gray-700 font-bold mb-2">Price</label>
-                        <select id="price" name="price" className="border rounded w-full py-2 px-3" required>
-                            <option value="Rs.5000">Rs.5000</option>
-                            <option value="Rs.3500">Rs.3500</option>
-                            <option value="Rs.15000">Rs.15000</option>
-                        </select>
-                    </div>
+            {/* Description */}
+                <textarea
+                    rows={4}
+                    placeholder="Course Description"
+                    className="w-full border p-2"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                />
 
-                    <div>
-                        <button className="bg-purple-500 hover:bg-purple-600 my-10  text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline" type="submit">
-                            Add Course
-                        </button>
-                    </div>
-                </form>
-            </div>
+            {/* Image Upload */}
+                <div>
+                    <label className="block text-gray-700 font-bold mb-2">
+                    Course Image (optional)
+                    </label>
+                    <input
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) => {
+                            if (e.target.files && e.target.files[0]) {
+                                setCourseImage(e.target.files[0]);
+                            }
+                        }}
+                    />
+                </div>
+
+                <button className="bg-purple-500 text-white px-4 py-2 rounded" type="submit">
+                Add Course
+                </button>
+            </form>
         </div>
-        </section>
-    </div>
-  )
+    );
 }
 
 export default AddCourse
