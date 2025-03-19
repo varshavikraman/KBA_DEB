@@ -9,16 +9,13 @@ const Login = () => {
       style={{ backgroundImage: `url(${bgImage})`, backgroundSize: "cover", backgroundPosition: "center" }}
     >
 
-      {/* Logo Section */}
       <div className="absolute top-8 left-1/2 transform -translate-x-1/2 flex flex-col md:flex-row items-center space-x-4 text-center">
         <img src={logo} alt="logo" className="w-16 h-16 md:w-20 md:h-20" />
         <h1 className="font-serif text-4xl md:text-5xl font-bold text-green-800">ATHENAEUM</h1>
       </div>
 
-      {/* Main Content */}
       <div className="flex flex-col lg:flex-row justify-center items-center h-full px-5 md:px-10 lg:px-20 space-y-10 lg:space-y-0 lg:space-x-16">
 
-        {/* Left Section - Text */}
         <div className="w-full lg:w-1/2 text-center lg:text-left">
           <p className="text-2xl md:text-3xl font-mono font-medium">Unveil a Realm of Wisdom</p>
           <p className="text-lg md:text-xl my-3">Step into a world where knowledge gleams, A digital haven spun from dreams with books and treasures at your command. Just a click away.</p>
@@ -28,7 +25,6 @@ const Login = () => {
           </p>
         </div>
 
-        {/* Right Section - Form */}
         <div className="w-full lg:w-1/2 max-w-lg bg-white rounded-2xl shadow-lg shadow-green-500 p-8">
           <h2 className="text-lime-500 text-2xl md:text-3xl font-medium text-center">Login</h2>
 
