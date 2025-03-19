@@ -2,7 +2,7 @@ import { Router } from "express";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
-import {user} from "../Models/sample.js";
+import {user,book} from "../Models/sample.js";
 
 dotenv.config();
 
@@ -42,21 +42,21 @@ userRoute.post('/signup',async(req,res)=>{
         console.error(error);
         res.status(500).json("Internal Server Error");
     }
-})
+});
 
 userRoute.post('/login',async(req,res)=>{
     try{
         const {UserName,Password}=req.body;
         const result = await user.findOne({userName : UserName});
         if(!result){
-            return res.status(400).json({ msg: "Invalid username or password" })
+            res.status(400).send("Enter the valid password")
         }
         else{
             console.log(result.password);
             const valid = await bcrypt.compare(Password,result.password);
             console.log(valid);
             if(valid){
-                const token = jwt.sign({userName:UserName,userRole:result.userRole},process.env.SECRET_KEY,{expiresIn:'1h'});
+                const token = jwt.sign({_id:result._id,userName:UserName,userRole:result.userRole},process.env.SECRET_KEY,{expiresIn:'1h'});
                 console.log(token);
                 res.cookie('authToken',token,
                     {
@@ -66,15 +66,38 @@ userRoute.post('/login',async(req,res)=>{
             }
             else{
 
-                res.status(401).json({ msg: "Unauthorized access" });
+                res.status(401).send("Unauthorized access");
 
             }
         }
     }
     catch (error) {
         console.error(error);
-        res.status(500).json({ msg: "Internal server error" });
+        res.status(500).send("Internal Server Error");
     }
+});
+
+userRoute.get('/getBook',async(req,res)=>{
+    try{
+        const bId = req.query.bookId;
+        console.log(bId);
+
+        const bookdetails = await book.findOne({bookId:bId});
+        if (bookdetails) {
+            const imageBuffer = Buffer.from(bookdetails.image, "base64");
+      
+            res.status(201).json({data:bookdetails})
+                
+        }
+        else{
+            res.status(404).json({msg:"No such event available"});
+        }
+    }      
+    catch (error) {
+        console.error(error);
+        res.status(500).send("Internal Server Error");
+    }
+
 })
 
 userRoute.get('/logout',(req,res)=>{

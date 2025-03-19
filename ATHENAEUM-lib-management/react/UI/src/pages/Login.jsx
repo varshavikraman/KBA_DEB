@@ -1,8 +1,43 @@
 import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import bgImage from '../assets/image/Book Background Images.jpg';
 import logo from '../assets/image/atheneum-logo.png';
 
 const Login = () => {
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError(''); 
+    try {
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          UserName: userName,
+          Password: password, 
+        }),
+      });
+
+      if (!response.ok) {
+        const errData = await response.json();
+        throw new Error(errData.msg || 'Log-in failed');
+      }
+
+      const data = await response.json();
+      console.log("Log-in successful:", data);
+      navigate('/home')
+      
+    } catch (err) {
+      setError(err.message || 'Log-in failed: Please try again!');
+    }
+  };
   return (
     <div 
       className="h-screen w-screen bg-cover bg-center" 
@@ -27,12 +62,15 @@ const Login = () => {
 
         <div className="w-full lg:w-1/2 max-w-lg bg-white rounded-2xl shadow-lg shadow-green-500 p-8">
           <h2 className="text-lime-500 text-2xl md:text-3xl font-medium text-center">Login</h2>
+          {error && <p className="text-red-500 text-center">{error}</p>}
 
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="pt-4">
               <label className="block">Username:</label>
               <input 
-                type="email" 
+                type="text"
+                value={userName} 
+                onChange={(e) => setUserName(e.target.value)} 
                 required 
                 className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
               />
@@ -41,7 +79,9 @@ const Login = () => {
             <div className="pt-4">
               <label className="block">Password:</label>
               <input 
-                type="password" 
+                type="password"
+                value={password} 
+                onChange={(e) => setPassword(e.target.value)} 
                 required 
                 className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
               />
@@ -51,7 +91,7 @@ const Login = () => {
               <button 
                 className="w-full md:w-36 h-12 text-green-200 bg-green-800 font-medium rounded-lg hover:bg-lime-600 hover:text-white transition"
               >
-                <a href="home.html">Login</a>
+                Login
               </button>
               <a href="forgot_password" className="text-green-700 hover:text-emerald-500 mt-4 md:mt-0">Forgot Password?</a>
             </div>
