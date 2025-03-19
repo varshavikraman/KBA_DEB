@@ -16,9 +16,16 @@ userRoute.post('/signup',async(req,res)=>{
         const existingUser = await user.findOne({userName : UserName});
 
     if(existingUser){
-        res.status(400).send("This Username already exists");
+        return res.status(400).send("This Username already exists");
     }
-    else{
+
+    if (UserRole === 'Admin') {
+        const adminExists = await user.findOne({ userRole: "Admin" });
+        if (adminExists) {
+            return res.status(403).json({ message: "An Admin already exists. You can only register as a user." });
+        }
+    }
+    
         const newPassword = await bcrypt.hash(Password,10);
         console.log(newPassword);
             const newUser = new user({
@@ -28,13 +35,12 @@ userRoute.post('/signup',async(req,res)=>{
                 userRole : UserRole
         });
         await newUser.save();
-        res.status(201).send("SignUp Successfully")
+        res.status(201).json({ message: "SignUp Successful" });
         console.log(existingUser);
-    }
     }
     catch (error) {
         console.error(error);
-        res.status(500).send("Internal Server Error");
+        res.status(500).json("Internal Server Error");
     }
 })
 

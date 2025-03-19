@@ -1,8 +1,46 @@
 import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import bgImage from "../assets/image/Pasted image.png";
 import logo from '../assets/image/atheneum-logo.png';
 
+
 const SignUp = () => {
+  const [name, setName] = useState("");
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [userRole, setUserRole] = useState('User');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('/api/signup', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          Name: name,
+          UserName: userName,
+          Password: password,
+          UserRole: userRole,
+        }),
+      });
+
+      if (!response.ok) {
+        const errData = await response.json();
+        throw new Error(errData.message || 'Signup failed');
+      }
+
+      const data = await response.json();
+      console.log("Signup successful:", data);
+      navigate('/');
+    } catch (err) {
+      setError(err.message || 'Signup failed: Please try again!');
+    }
+  };
   return (
     <div 
       className="h-screen w-screen bg-cover bg-center" 
@@ -25,26 +63,49 @@ const SignUp = () => {
 
         <div className="w-full lg:w-1/2 max-w-lg bg-white rounded-2xl shadow-lg shadow-green-500 p-8">
           <h2 className="text-lime-500 text-2xl md:text-3xl font-medium text-center">Sign Up</h2>
+          {error && <p className="text-red-500 text-center">{error}</p>}
 
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="pt-4">
               <label className="block">Name:</label>
-              <input type="text" required className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500" />
+              <input 
+                type="text" 
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required 
+                className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500" />
             </div>
 
             <div className="pt-4">
               <label className="block">Username:</label>
-              <input type="text" required className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500" />
+              <input 
+                type="text"
+                value={userName}
+                onChange={(e) => setUserName(e.target.value)}
+                required
+                className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500" />
             </div>
 
             <div className="pt-4">
               <label className="block">Password:</label>
-              <input type="password" required className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500" />
+              <input 
+                type="password" 
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required 
+                className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500" />
             </div>
 
             <div className="pt-4">
               <label className="block">UserRole:</label>
-              <input type="text" required className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500" />
+              <select
+                value={userRole}
+                onChange={(e) => setUserRole(e.target.value)}
+                className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              >
+                <option value="Admin">Admin</option>
+                <option value="User">User</option>
+              </select>
             </div>
 
             <div className="pt-6 text-center">
@@ -52,12 +113,15 @@ const SignUp = () => {
                 type="submit" 
                 className="w-36 h-12 text-green-200 bg-green-800 font-medium rounded-lg hover:bg-lime-600 hover:text-white transition"
               >
-                <a href="user_login.html">Sign Up</a>
+                Sign Up
               </button>
             </div>
 
             <div className="pt-4 text-center">
-              <p>Already have an account? <a href="user_login.html" className="text-green-700 hover:text-emerald-500">Login</a></p>
+              <p>Already have an account? 
+                <Link to="/login" className="text-[#981D26] font-medium hover:underline">
+                 Log In
+              </Link></p>
             </div>
           </form>
         </div>
