@@ -184,7 +184,7 @@ adminRoute.post('/issueBook', authenticate, adminCheck, async (req, res) => {
         }
 
         const newBorrowed = new borrow({
-            user: userData.userName,
+            userName: userData.userName,
             book: bookData._id,
             borrowDate: issueDate,
             returnDate: returnDate

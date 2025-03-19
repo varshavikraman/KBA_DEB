@@ -23,7 +23,7 @@ const bookSchema = new Schema({
 const book = model('BookDetail',bookSchema );
 
 const borrowSchema = new Schema({
-    user: { type: String, required: true },
+    userName: { type: String, required: true },
     book: { type: Schema.Types.ObjectId, ref: 'BookDetail', required: true },
     borrowDate: { type: Date, default: Date.now },
     returnDate: { type: Date }
@@ -34,7 +34,8 @@ const borrow = model('BorrowDetail', borrowSchema);;
 const returnSchema = new Schema({
     userName: { type: String, required: true }, 
     bookId: { type: String, required: true }, 
-    borrowDate: { type: Date, required: true }, 
+    borrowDate: { type: Date, required: true },
+    expiry :{},
     returnDate: { type: Date, default: Date.now },
 });
 
