@@ -12,11 +12,10 @@ const Navbar = () => {
                 <button type="submit" className="bg-green-500 h-7 my-6">Search</button>
             </div>
             <div className="space-x-6 mr-8 my-6">
-                <Link to="home.html" className="text-lg font-medium hover:bg-green-50">Home</Link>
-                <Link to="viewbooks.html" className="text-lg font-medium hover:bg-green-50">Books</Link>
-                <Link to="issuebook.html" className="text-lg font-medium hover:bg-green-50">Issue of Book</Link>
-                <Link to="returnbook.html" className="text-lg font-medium hover:bg-green-50">Return of Book</Link>
-                <Link to="login.html" className="text-lg font-medium hover:bg-green-50">Logout</Link>
+                <Link to="/home" className="text-lg font-medium hover:bg-green-50">Home</Link>
+                <Link to="/books" className="text-lg font-medium hover:bg-green-50">Books</Link>
+                <Link to="/myBooks" className="text-lg font-medium hover:bg-green-50">My Books</Link>
+                <Link to="/logout" className="text-lg font-medium hover:bg-green-50">Logout</Link>
              </div>
         </div>
     </div>

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../Component/Navbar'
+import DashBar from '../Component/DashBar'
 
 const AddBook = () => {
     const navigate = useNavigate();
@@ -54,13 +56,17 @@ const AddBook = () => {
       };
 
   return (
-    <div className="h-[800px] w-[490px] bg-white mx-auto my-10 rounded-2xl shadow-lg shadow-green-500">
+    <div className="bg-lime-100">
+       <Navbar/>
+       <div className="flex">
+          <DashBar/>
+    <div className="h-[1000px] w-[490px] bg-white mx-auto my-10 rounded-2xl shadow-lg shadow-green-500">
     <h2 className="text-lime-500 text-2xl font-medium text-center pt-14">Add New Book</h2>
 
     <form onSubmit={handleSubmit} className="px-10 py-5">
 
         <div className="pt-4">
-            <label htmlFor="image" className="block">Book Image:</label>
+            <label htmlFor="image" className="text-green-700 text-lg font-medium block">Book Image:</label>
             <input 
                 type="file" 
                 id="image" 
@@ -71,7 +77,7 @@ const AddBook = () => {
         </div>
 
         <div className="pt-4">
-            <label htmlFor="title" className="block">Book Title:</label>
+            <label htmlFor="title" className="text-green-700 text-lg font-medium block">Book Title:</label>
             <input
                 type="text"
                 name="title"
@@ -83,7 +89,7 @@ const AddBook = () => {
       </div>
 
         <div className="pt-4">
-            <label htmlFor="author" className="block">Author:</label>
+            <label htmlFor="author" className="text-green-700 text-lg font-medium block">Author:</label>
             <input
                 type="text"
                 name="author"
@@ -95,18 +101,17 @@ const AddBook = () => {
         </div>
 
       <div className="pt-4">
-        <label htmlFor="description" className="block">Description:</label>
-        <input
-          type="text"
-          name="description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          className="border border-gray-300 w-full px-3 py-2 rounded-md"
-        />
+        <label htmlFor="description" className="text-green-700 text-lg font-medium block">Description:</label>
+        <textarea 
+            rows="5" 
+            className="border border-gray-300 w-full px-3 py-2 rounded-md"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+        ></textarea>
       </div>
 
       <div className="pt-4">
-        <label htmlFor="publisher" className="block">Publisher:</label>
+        <label htmlFor="publisher" className="text-green-700 text-lg font-medium block">Publisher:</label>
         <input
           type="text"
           name="publisher"
@@ -118,7 +123,7 @@ const AddBook = () => {
       </div>
 
       <div className="pt-4">
-        <label htmlFor="bookId" className="block">Book ID:</label>
+        <label htmlFor="bookId" className="text-green-700 text-lg font-medium block">Book ID:</label>
         <input
           type="text"
           name="bookId"
@@ -130,7 +135,7 @@ const AddBook = () => {
       </div>
 
       <div className="pt-4">
-        <label htmlFor="publicationYear" className="block">Year of Publication:</label>
+        <label htmlFor="publicationYear" className="text-green-700 text-lg font-medium block">Year of Publication:</label>
         <input
           type="date"
           name="publicationYear"
@@ -142,10 +147,11 @@ const AddBook = () => {
       </div>
 
       <div className="pt-4">
-        <label htmlFor="copies" className="block">Number of Copies:</label>
+        <label htmlFor="copies" className="text-green-700 text-lg font-medium block">Number of Copies:</label>
         <input
           type="number"
           name="copies"
+          min={0}
           value={noOfCopies}
           onChange={(e) => setNoOfCopies(e.target.value)}
           required
@@ -156,12 +162,14 @@ const AddBook = () => {
       <div className="pt-6 text-center">
         <button
           type="submit"
-          className="w-40 h-10 text-white bg-green-800 font-medium rounded-2xl hover:bg-emerald-600 transition"
+          className="w-40 h-10 text-white bg-green-800 font-medium rounded-2xl hover:bg-lime-600 transition"
         >
           Add Book
         </button>
       </div>
     </form>
+  </div>
+  </div>
   </div>
   )
 }

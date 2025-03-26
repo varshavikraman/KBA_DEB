@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import bgImage from "../assets/image/Pasted image.png";
 import logo from '../assets/image/atheneum-logo.png';
 
@@ -30,13 +31,13 @@ const Landing = () => {
             type="button" 
             className="w-40 md:w-48 h-12 text-green-200 bg-green-900 font-medium rounded-full hover:bg-lime-600"
           >
-            <a href="admin_login.html">Log In</a>
+            <Link to="/login">Log In</Link>
           </button>
           <button 
             type="button" 
             className="w-40 md:w-48 h-12 text-green-200 bg-green-900 font-medium rounded-full hover:bg-lime-600 mt-4 md:mt-0"
           >
-            <a href="user_login.html">Sign Up</a>
+            <Link to="/signup">Sign Up</Link>
           </button>
         </div>
       </div>

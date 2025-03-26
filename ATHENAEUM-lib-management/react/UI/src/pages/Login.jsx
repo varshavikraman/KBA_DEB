@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import bgImage from '../assets/image/Book Background Images.jpg';
 import logo from '../assets/image/atheneum-logo.png';
@@ -32,7 +32,12 @@ const Login = () => {
 
       const data = await response.json();
       console.log("Log-in successful:", data);
-      navigate('/home')
+      
+      if (data.userRole === 'Admin') {
+        navigate('/dashboard');
+      } else {
+        navigate('/home');
+      }
       
     } catch (err) {
       setError(err.message || 'Log-in failed: Please try again!');
@@ -97,7 +102,7 @@ const Login = () => {
             </div>
 
             <div className="pt-4 text-center">
-              <p>Don't have an account? <a href="user_sign.html" className="text-green-700 hover:text-emerald-500">Sign Up</a></p>
+              <p>Don't have an account? <Link to="/signup" className="text-green-700 hover:text-emerald-500">Sign Up</Link></p>
             </div>
           </form>
         </div>

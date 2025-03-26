@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import bgImage from "../assets/image/Pasted image.png";
+import bgImage from "../assets/image/Book Background Images.jpg";
 import logo from '../assets/image/atheneum-logo.png';
 
 
@@ -28,19 +28,20 @@ const SignUp = () => {
           UserRole: userRole,
         }),
       });
-
-      if (!response.ok) {
-        const errData = await response.json();
-        throw new Error(errData.message || 'Signup failed');
-      }
-
+  
       const data = await response.json();
+  
+      if (!response.ok) {
+        throw new Error(data.message || 'Signup failed');
+      }
+  
       console.log("Signup successful:", data);
       navigate('/');
     } catch (err) {
       setError(err.message || 'Signup failed: Please try again!');
     }
   };
+  
   return (
     <div 
       className="h-screen w-screen bg-cover bg-center" 
@@ -119,7 +120,7 @@ const SignUp = () => {
 
             <div className="pt-4 text-center">
               <p>Already have an account? 
-                <Link to="/login" className="text-[#981D26] font-medium hover:underline">
+                <Link to="/login" className="text-green-700 hover:text-emerald-500">
                  Log In
               </Link></p>
             </div>

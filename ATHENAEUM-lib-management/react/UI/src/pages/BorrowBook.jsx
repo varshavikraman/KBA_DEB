@@ -1,17 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const BorrowBook = () => {
     const [username, setUsername] = useState("");
-    const [bookId, setBookId] = useState("");
     const [dateofIssue, setDateofIssue] = useState("");
-    const [dateofReturn, setDateofReturn] = useState("");
+    const [dueDate, setDueDate] = useState(""); // Changed from dateofReturn to dueDate
     const [message, setMessage] = useState('');
     const [error, setError] = useState('');
-
+    const { bookId } = useParams();
     const navigate = useNavigate();
 
     useEffect(() => {
+        // Set dates with proper timezone handling
+        const now = new Date();
+        const today = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().split('T')[0];
+        setDateofIssue(today);
+        
+        // Set default due date (14 days from now)
+        const defaultDueDate = new Date(now);
+        defaultDueDate.setDate(defaultDueDate.getDate() + 14);
+        const formattedDueDate = new Date(defaultDueDate.getTime() - defaultDueDate.getTimezoneOffset() * 60000).toISOString().split('T')[0];
+        setDueDate(formattedDueDate);
+
         const fetchUser = async () => {
             try {
                 const res = await fetch('/api/getUser', {
@@ -21,7 +31,7 @@ const BorrowBook = () => {
 
                 if (res.ok) {
                     const data = await res.json();
-                    setUsername(data.username);
+                    setUsername(data.userName || "");
                 } else {
                     throw new Error('Failed to fetch user');
                 }
@@ -34,28 +44,20 @@ const BorrowBook = () => {
         fetchUser();
     }, []);
 
-    const handleIssueDateChange = (e) => {
-        const issueDate = e.target.value;
-        setDateofIssue(issueDate);
-
-        if (issueDate) {
-            const issue = new Date(issueDate);
-            const returnDate = new Date(issue.getTime() + 14 * 24 * 60 * 60 * 1000);
-            const formattedReturnDate = returnDate.toISOString().split('T')[0];
-            setDateofReturn(formattedReturnDate);
-        }
-    };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         setMessage('');
         setError('');
 
         try {
+            // Create new Date objects to ensure proper formatting
+            const issueDateObj = new Date(dateofIssue);
+            const dueDateObj = new Date(dueDate); // Changed from returnDateObj to dueDateObj
+
             const formData = {
                 BookId: bookId,
-                DateofIssue: dateofIssue,
-                DateofReturn: dateofReturn,
+                DateofIssue: issueDateObj.toISOString(),
+                DateofReturn: dueDateObj.toISOString(),  // Changed from DueDate to DateofReturn
             };
 
             const res = await fetch("/api/issueBook", {
@@ -75,11 +77,11 @@ const BorrowBook = () => {
             setMessage("Book Borrowed successfully!");
             setTimeout(() => {
                 navigate('/home');
-            }, 2000); 
+            }, 2000);
 
         } catch (err) {
             console.error(err);
-            setError("Something went wrong: " + err.message);
+            setError(err.message);
         }
     };
 
@@ -94,21 +96,20 @@ const BorrowBook = () => {
                         <input
                             type="text"
                             id="username"
-                            value={username}
+                            value={username || ""}
                             readOnly
                             className="border border-gray-300 w-full px-3 py-2 rounded-lg bg-gray-100 focus:outline-none"
                         />
                     </div>
 
                     <div className="mb-5">
-                        <label htmlFor="bookId" className="block text-gray-700">Book Id:</label>
+                        <label htmlFor="bookId" className="block text-gray-700">Book ID:</label>
                         <input
                             type="text"
                             id="bookId"
-                            value={bookId}
-                            onChange={(e) => setBookId(e.target.value)}
-                            required
-                            className="border border-gray-300 w-full px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                            value={bookId || ""}
+                            readOnly
+                            className="border border-gray-300 w-full px-3 py-2 rounded-lg bg-gray-100 focus:outline-none"
                         />
                     </div>
 
@@ -117,36 +118,31 @@ const BorrowBook = () => {
                         <input
                             type="date"
                             id="issueDate"
-                            value={dateofIssue}
-                            onChange={handleIssueDateChange}
-                            required
-                            className="border border-gray-300 w-full px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-                        />
-                    </div>
-
-                    <div className="mb-5">
-                        <label htmlFor="returnDate" className="block text-gray-700">Date of Return:</label>
-                        <input
-                            type="date"
-                            id="returnDate"
-                            value={dateofReturn}
+                            value={dateofIssue || ""}
                             readOnly
                             className="border border-gray-300 w-full px-3 py-2 rounded-lg bg-gray-100 focus:outline-none"
                         />
                     </div>
 
-                    {message && (
-                        <div className="text-green-600 text-center mb-4">{message}</div>
-                    )}
-                    {error && (
-                        <div className="text-red-600 text-center mb-4">{error}</div>
-                    )}
+                    <div className="mb-5">
+                        <label htmlFor="dueDate" className="block text-gray-700">Due Date:</label> {/* Changed label */}
+                        <input
+                            type="date"
+                            id="dueDate"
+                            value={dueDate || ""}
+                            onChange={(e) => setDueDate(e.target.value)} // Allow admin to modify due date
+                            className="border border-gray-300 w-full px-3 py-2 rounded-lg focus:outline-none"
+                        />
+                    </div>
+
+                    {message && <div className="text-green-600 text-center mb-4">{message}</div>}
+                    {error && <div className="text-red-600 text-center mb-4">{error}</div>}
 
                     <div className="flex justify-center">
                         <button
                             type="submit"
                             className="w-40 h-12 text-white bg-green-600 font-medium rounded-2xl hover:bg-green-700 transition">
-                            Issue Book
+                            Borrow Book
                         </button>
                     </div>
                 </form>
