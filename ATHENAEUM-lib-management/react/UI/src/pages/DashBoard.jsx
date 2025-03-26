@@ -6,16 +6,26 @@ import BookGrid from '../Component/BookGrid';
 const DashBoard = () => {
   return (
     <div className="h-screen flex flex-col bg-lime-100">
-      {/* Navbar on top */}
-      <Navbar />
+
+      <div className="fixed top-0 left-0 right-0 z-20"> 
+        <Navbar />
+      </div>
       
-      <div className="flex flex-1">
-        {/* Sidebar on the left */}
-        <DashBar />
+      <div className="flex pt-16 h-full"> 
         
-        {/* Content taking the remaining space */}
-        <div className="flex-1 overflow-y-auto p-10">
-          <BookGrid isHome={true} showBorrowButton={false} showEditButton = {true} showDeleteButton = {true}/>
+        <div className="fixed left-0 top-16 bottom-0 z-10 w-64"> 
+          <DashBar />
+        </div>
+        
+        <div className="flex-1 ml-64 h-full overflow-y-auto"> 
+          <div className="p-10">
+            <BookGrid 
+              isHome={true} 
+              showBorrowButton={false} 
+              showEditButton={true} 
+              showDeleteButton={true}
+            />
+          </div>
         </div>
       </div>
     </div>

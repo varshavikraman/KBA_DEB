@@ -36,7 +36,6 @@ const ReturnBook = () => {
         const data = await response.json();
         console.log('API response data:', data);
         
-        // Find any record of this book (regardless of return status)
         const bookRecord = data.borrowDetails.find(record => 
           record.bookId.trim().toUpperCase() === bookId.trim().toUpperCase()
         );
@@ -45,15 +44,14 @@ const ReturnBook = () => {
           throw new Error(`No borrow record found for book ${bookId}`);
         }
   
-        // Check if already returned
+
         if (bookRecord.bookInfo.returnDate) {
           throw new Error(
             `This book was already returned on ${bookRecord.bookInfo.returnDate}. ` +
             `Cannot return again.`
           );
         }
-  
-        // Rest of your calculation code...
+
         const borrowDate = new Date(bookRecord.bookInfo.borrowDate);
         const expiryDate = new Date(borrowDate);
         expiryDate.setDate(expiryDate.getDate() + 14);
@@ -94,7 +92,7 @@ const ReturnBook = () => {
     try {
       const response = await fetch('/api/returnBook', {
         method: 'POST',
-        credentials: 'include', // Required for HTTP-only cookies
+        credentials: 'include', 
         headers: {
           'Content-Type': 'application/json'
         },
@@ -119,7 +117,7 @@ const ReturnBook = () => {
 
   const handlePayFine = async () => {
     try {
-      // Payment implementation would go here
+      
       alert('Payment functionality would be implemented here');
     } catch (error) {
       console.error('Payment error:', error);

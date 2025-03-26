@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import Navbar from '../Component/Navbar';
 
 const BorrowBook = () => {
     const [username, setUsername] = useState("");
     const [dateofIssue, setDateofIssue] = useState("");
-    const [dueDate, setDueDate] = useState(""); // Changed from dateofReturn to dueDate
+    const [dueDate, setDueDate] = useState("");
     const [message, setMessage] = useState('');
     const [error, setError] = useState('');
     const { bookId } = useParams();
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Set dates with proper timezone handling
         const now = new Date();
         const today = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().split('T')[0];
         setDateofIssue(today);
         
-        // Set default due date (14 days from now)
         const defaultDueDate = new Date(now);
         defaultDueDate.setDate(defaultDueDate.getDate() + 14);
         const formattedDueDate = new Date(defaultDueDate.getTime() - defaultDueDate.getTimezoneOffset() * 60000).toISOString().split('T')[0];
@@ -50,14 +49,13 @@ const BorrowBook = () => {
         setError('');
 
         try {
-            // Create new Date objects to ensure proper formatting
             const issueDateObj = new Date(dateofIssue);
-            const dueDateObj = new Date(dueDate); // Changed from returnDateObj to dueDateObj
+            const dueDateObj = new Date(dueDate);
 
             const formData = {
                 BookId: bookId,
                 DateofIssue: issueDateObj.toISOString(),
-                DateofReturn: dueDateObj.toISOString(),  // Changed from DueDate to DateofReturn
+                DateofReturn: dueDateObj.toISOString(),
             };
 
             const res = await fetch("/api/issueBook", {
@@ -86,66 +84,82 @@ const BorrowBook = () => {
     };
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
-            <div className="w-full max-w-md bg-white rounded-2xl shadow-lg shadow-green-500 p-10">
-                <h2 className="text-lime-500 text-2xl font-medium text-center">Borrow Book</h2>
+        <div className="min-h-screen bg-green-50">
+            <Navbar/>
+            <div className="container mx-auto py-12 px-4">
+                <div className="max-w-lg mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div className="p-8">
+                        <h2 className="text-2xl font-bold text-green-600 text-center mb-6">Borrow Book</h2>
 
-                <form className="mt-7" onSubmit={handleSubmit}>
-                    <div className="mb-5">
-                        <label htmlFor="username" className="block text-gray-700">Username:</label>
-                        <input
-                            type="text"
-                            id="username"
-                            value={username || ""}
-                            readOnly
-                            className="border border-gray-300 w-full px-3 py-2 rounded-lg bg-gray-100 focus:outline-none"
-                        />
+                        <form onSubmit={handleSubmit} className="space-y-5">
+                            <div className="space-y-4">
+                                <div>
+                                    <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-1">
+                                        Username
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="username"
+                                        value={username || ""}
+                                        readOnly
+                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-green-500"
+                                    />
+                                </div>
+
+                                <div>
+                                    <label htmlFor="bookId" className="block text-sm font-medium text-gray-700 mb-1">
+                                        Book ID
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="bookId"
+                                        value={bookId || ""}
+                                        readOnly
+                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-green-500"
+                                    />
+                                </div>
+
+                                <div>
+                                    <label htmlFor="issueDate" className="block text-sm font-medium text-gray-700 mb-1">
+                                        Date of Issue
+                                    </label>
+                                    <input
+                                        type="date"
+                                        id="issueDate"
+                                        value={dateofIssue || ""}
+                                        readOnly
+                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-green-500"
+                                    />
+                                </div>
+
+                                <div>
+                                    <label htmlFor="dueDate" className="block text-sm font-medium text-gray-700 mb-1">
+                                        Due Date
+                                    </label>
+                                    <input
+                                        type="date"
+                                        id="dueDate"
+                                        value={dueDate || ""}
+                                        onChange={(e) => setDueDate(e.target.value)}
+                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                                    />
+                                </div>
+                            </div>
+
+                            {message && <div className="p-3 bg-green-100 text-green-700 rounded-lg text-center">{message}</div>}
+                            {error && <div className="p-3 bg-red-100 text-red-700 rounded-lg text-center">{error}</div>}
+
+                            <div className="pt-4">
+                                <button
+                                    type="submit"
+                                    className="w-full py-3 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition duration-200"
+                                >
+                                    Borrow Book
+                                </button>
+                            </div>
+                        </form>
                     </div>
-
-                    <div className="mb-5">
-                        <label htmlFor="bookId" className="block text-gray-700">Book ID:</label>
-                        <input
-                            type="text"
-                            id="bookId"
-                            value={bookId || ""}
-                            readOnly
-                            className="border border-gray-300 w-full px-3 py-2 rounded-lg bg-gray-100 focus:outline-none"
-                        />
-                    </div>
-
-                    <div className="mb-5">
-                        <label htmlFor="issueDate" className="block text-gray-700">Date of Issue:</label>
-                        <input
-                            type="date"
-                            id="issueDate"
-                            value={dateofIssue || ""}
-                            readOnly
-                            className="border border-gray-300 w-full px-3 py-2 rounded-lg bg-gray-100 focus:outline-none"
-                        />
-                    </div>
-
-                    <div className="mb-5">
-                        <label htmlFor="dueDate" className="block text-gray-700">Due Date:</label> {/* Changed label */}
-                        <input
-                            type="date"
-                            id="dueDate"
-                            value={dueDate || ""}
-                            onChange={(e) => setDueDate(e.target.value)} // Allow admin to modify due date
-                            className="border border-gray-300 w-full px-3 py-2 rounded-lg focus:outline-none"
-                        />
-                    </div>
-
-                    {message && <div className="text-green-600 text-center mb-4">{message}</div>}
-                    {error && <div className="text-red-600 text-center mb-4">{error}</div>}
-
-                    <div className="flex justify-center">
-                        <button
-                            type="submit"
-                            className="w-40 h-12 text-white bg-green-600 font-medium rounded-2xl hover:bg-green-700 transition">
-                            Borrow Book
-                        </button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     );

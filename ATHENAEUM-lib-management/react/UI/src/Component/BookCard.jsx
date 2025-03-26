@@ -59,9 +59,7 @@ const BookCard = ({ book, showBorrowButton = true, showEditButton = true, showDe
           {book.description}
       </p>
       
-     {/* Button Group */}
      <div className="flex space-x-3 my-5 px-5">
-        {/* Borrow Button */}
         {showBorrowButton && (
         <Link
           to={`/borrowBook/${encodeURIComponent(book.bookId)}`}
@@ -71,7 +69,6 @@ const BookCard = ({ book, showBorrowButton = true, showEditButton = true, showDe
         </Link>
         )}
 
-        {/* Delete Button */}
         {showDeleteButton && (
         <button
           onClick={handleDelete} 
@@ -81,10 +78,9 @@ const BookCard = ({ book, showBorrowButton = true, showEditButton = true, showDe
         </button>
         )}
 
-        {/* Edit Button */}
         {showEditButton && (
         <Link
-          to={`/editBook/${encodeURIComponent(book.bookTitle)}`}
+          to={`/editBook/${encodeURIComponent(book.bookId)}`}
           className="w-28 h-10 flex items-center justify-center text-yellow-200 bg-yellow-600 font-medium rounded-lg hover:bg-yellow-700 hover:text-white transition-all"
         >
           Edit

@@ -107,9 +107,29 @@ adminRoute.get('/getBookImage', async (req, res) => {
     }
 });
 
+adminRoute.get('/bookDetails/:bookId', async (req, res) => {
+    try {
+        const { bookId } = req.params;
+        if (!bookId) {
+            return res.status(400).json({ message: "BookId is required" });
+        }
+
+        const result = await book.findOne({ bookId });;    
+        if (result) {
+            console.log(result);
+            res.status(200).json(result);
+        } else {
+            res.status(404).json({ message: "Book not available" });
+        }
+    } catch (error) {
+        res.status(500).json({ message: "Server error" });
+    }
+});
+
+// Update the updateBookCopies route to use bookId instead of title
 adminRoute.patch('/updateBookCopies', authenticate, adminCheck, async (req, res) => {
     try {
-        const { BookTitle, NumberOfCopies } = req.body;
+        const { BookId, NumberOfCopies } = req.body;
         
         // Validate input
         if (typeof NumberOfCopies !== 'number' || NumberOfCopies < 0) {
@@ -117,13 +137,13 @@ adminRoute.patch('/updateBookCopies', authenticate, adminCheck, async (req, res)
         }
 
         const result = await book.findOneAndUpdate(
-            { bookTitle: BookTitle },
+            { bookId: BookId },
             { $set: { numberOfCopies: NumberOfCopies } },
             { new: true }
         );
 
         if (!result) {
-            return res.status(404).json({ msg: `Book titled "${BookTitle}" not found` });
+            return res.status(404).json({ msg: `Book with ID "${BookId}" not found` });
         }
 
         res.status(200).json({ 
@@ -358,6 +378,32 @@ adminRoute.post('/returnBook', authenticate, adminCheck, async (req, res) => {
             msg: "Internal Server Error", 
             error: error.message 
         });
+    }
+});
+
+adminRoute.get('/searchbook', async (req, res) => {
+    try {
+        const { searchValue } = req.query;
+        if (!searchValue) {
+            return res.status(400).json({ message: "Query parameter is required" });
+        }
+
+        const searchResults = await book.find({
+            $or: [
+                { bookTitle: { $regex: searchValue, $options: "i" } },
+                { bookId: { $regex: searchValue, $options: "i" } },
+                { author: { $regex: searchValue, $options: "i" } }
+            ]
+        });
+
+        if (searchResults.length === 0) {
+            return res.status(404).json({ message: "No books found." });
+        }
+
+        res.status(200).json(searchResults);
+    } catch (error) {
+        console.error("Error searching books:", error);
+        res.status(500).json({ message: "Internal Server Error" });
     }
 });
 

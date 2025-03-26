@@ -13,6 +13,7 @@ import Home from './pages/Home';
 import Books from './pages/Books'
 import EditBook from './pages/EditBook';
 import MyBooks from './pages/MyBooks';
+import SearchResult from './Component/SearchResult';
 const App = () => {
   return (
     <BrowserRouter>
@@ -26,10 +27,11 @@ const App = () => {
         <Route path="/logout" element={<Logout />} />
         <Route path="/dashboard" element={<DashBoard />} />
         <Route path="/addBook" element={<AddBook />} />
-        <Route path="/editBook/:bookTitle" element={<EditBook />} />
+        <Route path="/editBook/:bookId" element={<EditBook />} />
         <Route path="/borrowBook/:bookId" element={<BorrowBook />} />
         <Route path="/myBooks" element={<MyBooks />} />
         <Route path="/returnBook/:bookId" element={<ReturnBook/>} />
+        <Route path="/search" element={<SearchResult />} />
       </Routes>
     </BrowserRouter>
   )

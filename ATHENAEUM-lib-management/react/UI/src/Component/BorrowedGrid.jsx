@@ -24,7 +24,6 @@ const BorrowedGrid = ({ isHome = true, showReturned = false }) => {
                 const data = await response.json();
                 
                 if (data && Array.isArray(data.borrowDetails)) {
-                    // Filter based on whether to show returned books
                     const filtered = showReturned 
                         ? data.borrowDetails 
                         : data.borrowDetails.filter(book => !book.bookInfo.actualReturnDate);

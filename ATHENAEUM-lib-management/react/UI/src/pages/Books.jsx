@@ -5,9 +5,11 @@ import BookGrid from '../Component/BookGrid'
 
 const Books = () => {
   return (
-    <div className="bg-green-50">
+    <div className="min-h-screen bg-green-50">
       <Navbar/>
-      <BookGrid isHome={false} showBorrowButton={true} showEditButton = {false} showDeleteButton = {false}/>
+      <div className="pb-10">
+        <BookGrid isHome={false} showBorrowButton={true} showEditButton = {false} showDeleteButton = {false}/>
+      </div>
     </div>
   )
 }

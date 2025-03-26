@@ -62,7 +62,10 @@ userRoute.post('/login',async(req,res)=>{
                     {
                         httpOnly:true
                 });
-                res.status(200).json({message:"Logged in successfully"});
+                res.status(200).json({
+                    message:"Logged in successfully",
+                    userRole: result.userRole
+                });
             }
             else{
 

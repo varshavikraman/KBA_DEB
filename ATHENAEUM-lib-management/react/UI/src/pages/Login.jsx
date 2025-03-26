@@ -34,7 +34,7 @@ const Login = () => {
       console.log("Log-in successful:", data);
       
       if (data.userRole === 'Admin') {
-        navigate('/dashboard');
+      navigate('/dashboard');
       } else {
         navigate('/home');
       }

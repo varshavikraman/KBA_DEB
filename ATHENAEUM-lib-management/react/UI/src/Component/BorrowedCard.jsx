@@ -7,7 +7,6 @@ const BorrowedCard = ({ borrow, handleReturn }) => {
 
     const { bookId, bookInfo } = borrow;
     
-    // Calculate status and style based on return status
     const isReturned = bookInfo.actualReturnDate;
     const statusStyle = isReturned ? "bg-blue-100 text-blue-800" : "bg-green-100 text-green-800";
     
